@@ -28,7 +28,7 @@ from .weighted_prefix import solve as solve_weighted, supported as weighted_supp
 from .certificate_support import _dense_layout
 
 
-def solve_candidate(r, deadline, seed, *, emit=None):
+def solve_candidate(r, deadline, seed, *, emit=None, emit_dual=None):
     n = len(r.nodes)
     prior = Fraction(r.prior, r.units)
     value = None if seed is None else check(r.instance, seed["route"], seed["amounts"], tol=0)["objective"]
@@ -267,6 +267,8 @@ def solve_candidate(r, deadline, seed, *, emit=None):
                 nonlocal upper
                 if value is not None and (bound is None or bound < value):
                     raise ArithmeticError("Replayed dual certificate excludes a verified incumbent")
+                if emit_dual is not None:
+                    emit_dual(bound, document)
                 if bound is None or bound < upper:
                     upper = bound
                     dual.update(dual_certificate=document,

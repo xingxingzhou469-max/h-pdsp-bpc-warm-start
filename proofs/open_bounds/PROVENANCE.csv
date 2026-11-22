@@ -1,0 +1,18 @@
+instance_id,source,archive_artifact,selection,artifact_sha256,archive_leaf_count,upper_exact
+blind-12,historical_dual,runs/v8-20261119/sprint-360/blind-12/dual.jsonl,line 8,1409ef3c1fc289932cc8fc705cf3a65245a5a8eabc1bfe16060bbfa88caa68ac,3,1568271/2378
+blind-12,independent_frontier,runs/explore-v2/bc600-blind-12.json,frontier,2958b79d0b7da1e4c030341fb512aeee850b5ad87118219f73ccb1d94931faae,179,1562347/2378
+random-60-4,historical_dual,runs/v8-20261119/formal-history/events/random-60-4__candidate.jsonl,final event row.dual_certificate,31febad1f076d83fc12db1f58e833d1c13621f600a35655214e69c6ad377d1f8,3,107747/567
+random-60-4,independent_frontier,runs/explore-v2/bc600-random-60-4.json,frontier,8979c6c3e401bbb5c97913ed05fb349ac23d91267b359426cb46f1787d691ed8,177,155213/819
+random-60-5,historical_dual,runs/v8-20261119/formal-history/events/random-60-5__candidate.jsonl,final event row.dual_certificate,ddee7a538dc0e8fefe21fd46495b29a4a7c3208cdbf40fae5454d3044eaeeb01,3,81140/351
+random-60-5,independent_frontier,runs/explore-v2/bc600-random-60-5.json,frontier,2acf825478b19b6f902f074ce98b2a13176af1da1b9b91eceea311ac39ac4681,122,1690783/7371
+random-60-6,historical_dual,runs/v8-20261119/sprint-360/random-60-6/dual.jsonl,line 36,b3e7a50c1e27710f0b86ac2c83b3f932ccef74a7d7650197d1e511d49b9ed857,4,252650/819
+random-60-6,independent_frontier,runs/explore-v2/bc600-random-60-6.json,frontier,1260ad35a9341c49fc9e753a1708ca99516e856652f2c1a1c44ec91935bd64d5,122,759376/2457
+random-100-2,historical_dual,runs/v8-20261119/gate-history-r03/events/random-100-2__candidate.jsonl,final event row.dual_certificate,7d2e0a1e7969abf48293df60a81040e5e3afc333fd576bb01004f587db5c57ab,2,2018587/5852
+random-100-2,independent_frontier,runs/explore-v2/bc600-random-100-2.json,frontier,b62fd84930949be6e4299e5f85e9347790e29e162846108c647a812d02ffbc4c,52,565837/1672
+random-100-3,historical_dual,runs/v8-20261119/gate-history-r03/events/random-100-3__candidate.jsonl,final event row.dual_certificate,f44b0eee706a7800a882458fd3840581e6d158dc1fc6742a0bd832d6cb263530,2,455977/1064
+random-100-3,independent_frontier,runs/explore-v2/bc600-random-100-3.json,frontier,3ed934d2594134e9dede6a3fe74eb7c0d8249cf2f370101b300184627a639e5e,46,2507723/5852
+random-100-4,historical_dual,runs/v8-20261119/gate-history-r03/events/random-100-4__candidate.jsonl,final event row.dual_certificate,4ce8069a6c05f06aaa7711dfef64e21e157365d655258eede36139810c989256,3,835990/1463
+random-100-4,independent_frontier,runs/explore-v2/bc600-random-100-4.json,frontier,1dcf427f059be7fb55c81a03637c3b1e67745b4adbc570a227dee493dd07a377,38,6661961/11704
+random-100-5,historical_dual,runs/v8-20261119/sprint-360/random-100-5/dual.jsonl,line 19,2cdc5cec94ffb769b64e573253fae3bb455866a89161397587bca67f4e2b6680,1,2396027/2926
+random-100-5,independent_frontier,runs/explore-v2/bc300-random-100-5.json,frontier,e224ae13e37d403c93477c7e34922b7b03f86d4cc8baad7376cd4c25e188ef6a,1,2396027/2926
+blind-09,independent_frontier,runs/explore-v2/bc600-blind-09.json,frontier,962829a962d512e66293dcd171aef2188ac495fd480ebb9f834383aac7f25e8d,276,1632000/2353

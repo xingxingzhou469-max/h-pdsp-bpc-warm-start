@@ -54,6 +54,28 @@ python warm_start.py instances/random-20-1.json my-solution.json --vehicles 2
 
 将两条命令的实例路径替换为自己的规范 JSON。`travel[i][j]` 是有向弧时，`service`、`supply`、`population` 使用同一节点编号，仓库为 0。`capacity` 为车容，`limit` 为单条路线含服务及回仓的时限。可参考随包的任一实例。输出 `feasible` 表示在预算内找到且验过一条路线。`no_witness` 表示未取得可核验的非空初解。搜索按墙钟给定预算，初始化或一次原生调用可能使程序稍晚退出。[封存来源及交付源码指纹](single_vehicle/SOURCE.json)
 
+## 独立复验单车上界与最优性
+
+在仓库根目录运行下列命令。第一条检查全部 60 例，第二条只检查一个已闭合和一个未闭合的实例。复验使用 Python 3.13 标准库和支持 C++20 的编译器，部分算例会在临时目录编译独立的精确检查程序。整个流程直接读随包实例、解和上界材料，无需安装 HiGHS，也无需启动 V8。
+
+```bash
+python3 -B -S verify_bounds.py
+python3 -B -S verify_bounds.py blind-01 random-60-6
+```
+
+每行 JSON 都给出精确分数 `lower_exact` 和 `upper_exact`。下界来自对给定路线的零容差复算，上界来自该例对应的独立证明，两者相等才输出 `strict_optimal`。例如 `blind-01` 的两端均为 `63875/139`；`random-60-6` 的区间为 `[249553/819, 252650/819]`。全量复验得到 **52 例相等、8 例仍有正差距**。[逐例上界及验证入口](index.csv)
+
+可用的上界证据有不同形式。整数对偶证书保存了分支叶、割和乘子，验证器从原始模型逐叶重建并检查树的完整性。部分已闭合的实例使用供给上界或时间树即可证明，其余使用独立的访问集合、供点分区或反向路线检查程序重新覆盖所有可能改善的分支。这些计算需要一定时间。8 个开放实例均附有可重放的整数证书。[归档对偶证书及来源](proofs/dual/sources.json) · [8 个开放实例的证书](proofs/open_bounds/README.md)
+
+对于新实例，可以在求解时另存本次运行的上界材料，随后在独立进程复核。
+
+```bash
+python solve_single.py instances/random-20-1.json --seconds 10 --output route.json --proof-output proof.json
+python -B -S solve_single.py instances/random-20-1.json --verify-proof proof.json
+```
+
+`replayable` 记录能由文件独立验出的上界，包括解析先验及本次取得的整数对偶证书。`trusted_search` 单列精确搜索内核报告的全局界。搜索内核可能已经闭合，而本次导出的独立证据仍有间隙；复验命令只按可重放部分判定。多车 BPC 示例的结果仍按可行解解读。
+
 ## 数据和验收
 
 48 个公开算例来自 Eisenhandler 与 Tzur 的 H-PDSP 数据，12 个是本项目的历史盲测算例。每例只收录一份已验证的路线。52 份达到历史严格最优值，另外 8 份保留已核验的最好可行值。记录来自多次独立运行，其中 55 份选自 V8、4 份选自独立研究路线、1 份选自 C1 长时运行。索引记录实例文件、解文件、输入和解的指纹，以及研究归档中的原件位置。公开算例使用随包规范 JSON 的数值口径。[60 例索引](index.csv) · [作者数据页](https://ohadeis.wixsite.com/ohadeis/research) · [论文](https://doi.org/10.1287/opre.2018.1751)
@@ -65,7 +87,7 @@ python warm_start.py instances/random-20-1.json my-solution.json --vehicles 2
 | 单车小图穷举 | 38 个原有小图和 120 个固定种子新图共枚举 1,713 条可行路线，逐路线独立线性规划的精确上下界一致。V8 在 108 个有解图上得到穷举最优值，50 个无解图均返回无初解。新图种子为 20261122。 |
 | 接入回归 | 覆盖超时路线、站点冲突、超出车数、目标值篡改、精确小数时限、定价对偶符号、HiGHS 接收完整初解，以及双车改进。 |
 
-启用原生搜索组件后，原单车工程的 288 项测试全部通过。随包保留 13 项面向交付入口的回归测试。
+启用原生搜索组件后，原单车工程的 288 项测试全部通过。随包回归覆盖初解、整数主问题接入和单车上界导出。
 
 本次修正了接入示例对非法初解的处理，并把显式整数起点送入 HiGHS。修正了旧构造定价从单个供点出发时无法生成首列的问题，以及二进制浮点舍入会漏掉恰好按时回仓路线的问题。后一个回归使用三段各 0.1、时限 0.3 的有向路线。原生构建与完整接入流程已在 Apple Silicon 的 macOS 上实测。构建脚本另含 Linux 分支。
 

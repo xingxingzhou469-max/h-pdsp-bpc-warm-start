@@ -4,33 +4,35 @@
   "original_code_id": "6307d292acaf8f19ff0901d67d148dbdd4a77e5a6c06454da03ea440a937ce0b",
   "original_design_sha256": "92abedfaedc1a21fd0ce0676831932c43019b90413d57bd0f464641d4cc6d5ed",
   "original_file_count_verified": 73,
-  "delivered_source_id": "1b5c2a91f6bc231e13d3632d99f050d2312fa4d564241cb4b42bb8380d6a89f6",
+  "delivered_source_id": "3e23a57486e09decd183a0fb5b3677d15c321bf353a6b93fbdc42da8b27d44f9",
   "source_id_definition": "SHA-256 of the UTF-8 JSON encoding of source_hashes with Python json.dumps(sort_keys=True)",
   "adaptations": {
+    "hpdp/cert_verifier.py": "Cache the integer routing model and cut encoder for independent replay across certificate leaves.",
     "hpdp/certificate_support.py": [
       "scripts/audit_allocation.py: rank_certificate",
       "scripts/certify_residual_orders.py: _reverse_tails, _nodes",
       "scripts/visit_set_certificate.py: _integer_units, _dense_layout, _VisitTimes, _visit_times, _box_numerator"
     ],
     "hpdp/check.py": "Keep exact route scoring. The checker CLI also verifies objective_exact when present.",
+    "hpdp/cut_cert.py": "Extend exact cut replay with the historical A_BLOSSOM and B_PRECEDENCE_ENTRY valid inequalities.",
     "hpdp/dense_overnight.py": "Import the preserved certificate primitives from hpdp.certificate_support.",
     "hpdp/dense_witness.py": "Import the preserved certificate primitives from hpdp.certificate_support.",
     "hpdp/full_visit_assignment.py": "Import the preserved rank certificate from hpdp.certificate_support.",
     "hpdp/instances.py": "Keep the original canonical JSON, validation and loading functions.",
     "hpdp/model.py": "Keep the original LP options, SciPy HiGHS wrapper and connectivity separator.",
-    "hpdp/overnight_candidate.py": "Import the preserved dense layout function from hpdp.certificate_support.",
+    "hpdp/overnight_candidate.py": "Use the preserved dense layout and optionally emit each verified portable dual for export.",
     "single_vehicle/build_native.py": "Rebuild all nine original native components from the frozen C++ sources.",
-    "solve_single.py": "Run the frozen seed pipeline and V8 entry point and export an independently checked witness."
+    "solve_single.py": "Run the frozen search and export a verified witness. Optionally preserve trusted search bounds and independently replayable bounds in a proof report."
   },
   "source_hashes": {
     "hpdp/__init__.py": "d5620b5edfc0b3adb6cdb2be69d13c8a8464fe737c79978b463e9e64a073196c",
     "hpdp/allocation.py": "7b0313ef849cf246e911ed270539ec17fa4369e64e4ed9dc605160e7cc8f396e",
-    "hpdp/cert_verifier.py": "fa3acffe06a8c71ff74fadf4bb2ecbf83d225d520d4c80e10c4b38793499058c",
+    "hpdp/cert_verifier.py": "6eb0b26c1f4b824e7ad4c58f7685af984d14be5b5e5e9fc0880ecf54dc2c4c30",
     "hpdp/certificate_support.py": "05b7169c22a5c36ea188d16a0a026a259e226494e197155c1ca676c3b3cc5df9",
     "hpdp/chain_oracle.cpp": "6078140d5e09899fb6cf964e2ddc96b09b7d4b057412845be6ceb396345623b3",
     "hpdp/chain_oracle.py": "783537dab91fb7ec953e7a885284569f74c14bebbfba3f8229e2ab3002b831c8",
     "hpdp/check.py": "7e7f18da7240dbcead63571cfeabc0f427afda0bf8d7a6690d91a2754e7903c2",
-    "hpdp/cut_cert.py": "7f5fd35398b56f976e6536fd0cc77bad73026551dcbc92129cff17ed91f6c683",
+    "hpdp/cut_cert.py": "a0fe410496adfac8f963c098af303976dc1e0fb648d3e028fd66892aaac3b1d0",
     "hpdp/dense_overnight.py": "f34a355753c23b372f8e37791ca7c3cf507646b69f72e4069dff6f17b74055fa",
     "hpdp/dense_witness.py": "0c8b50c6cbf8d9c4f452c0de70cf0f0b59394d70c402a1808a5ba84dadf46f97",
     "hpdp/dual_plugin.py": "aa6647e08149c8bf278b96fd273240326e6c2b2cf4d63e89be640ac4aff9e2ef",
@@ -56,7 +58,7 @@
     "hpdp/one_tree_time.py": "b8a19257d764b627305590978f7c6bef10b64a37a48637a4a4e20d4397963931",
     "hpdp/order_frontier.cpp": "d1d79db9ba74182d282829cd26dcb02e01023fd5013bdb997d391ffb51ebad32",
     "hpdp/order_frontier.py": "ee1157f12835425d12d6532ebc36eb7f62a99387b847b13e1d08d4befbc319ec",
-    "hpdp/overnight_candidate.py": "6a7fb3a954b3f1681cf6faa9a2548999195f8288bcb824bfeeeae80c18d7d6d9",
+    "hpdp/overnight_candidate.py": "ea139b04f087844b0d0d3a9c4f91822252e040e6c5704de045e7326339198e05",
     "hpdp/population_sections.py": "e5d24a371441f3bd18b334fb3004f8094de39526663cad0977310b758f9cb135",
     "hpdp/population_walks.cpp": "d6ee032553a66c86786ebce728e51cef0943174c65363b2ef0f643cc50b5f82b",
     "hpdp/portfolio.py": "d9a7875cdb0cbd01368638a1fd6bf057e5ed6719aeca7aa65d74bc096aedbe60",
@@ -73,6 +75,6 @@
     "hpdp/weighted_prefix.cpp": "b3236efbd1b5c067c5e7d70cb2662d3c119bb6982a10b6a4b6a16eaee5149dfb",
     "hpdp/weighted_prefix.py": "98a9a72d9956ff231b3d5d8e583354fb3e603fc13c33da8a1ddeb2735b29939a",
     "single_vehicle/build_native.py": "9aea4556beea78881b3cc6102dcf95205033b0e6c50f31935995053e506e1ca9",
-    "solve_single.py": "6f97e3286f9599f47be44d524d52893c660351b742b73dfda077d564d169005e"
+    "solve_single.py": "efafbc147fa94cc866e3b29dffc5b7fca8a6152678f79c65b3b5f85e71599c9a"
   }
 }

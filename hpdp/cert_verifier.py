@@ -6,7 +6,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 
-from .cut_cert import cut_row
+from .cut_cert import CutEncoder
 from .instances import decode_instance
 from .prefix import Resources
 from .priced_routes import cap_product
@@ -67,8 +67,9 @@ class CertificateVerifier:
         a, b = slope
         variant = document["pickup_blocks"]
         if variant not in self.models:
-            self.models[variant] = routing(self.r, pickup_blocks=variant)
-        model = self.models[variant]
+            model = routing(self.r, pickup_blocks=variant)
+            self.models[variant] = model, CutEncoder(self.r, model)
+        model, encoder = self.models[variant]
         paths, rows = [], []
         for leaf in leaves:
             if (type(leaf) is not dict
@@ -89,7 +90,7 @@ class CertificateVerifier:
         upper = -1
         for leaf, branches in zip(leaves, rows, strict=True):
             inequalities = [model.time, *model.flow_rows]
-            inequalities.extend(cut_row(self.r, model, spec) for spec in leaf["cuts"])
+            inequalities.extend(encoder.row(spec) for spec in leaf["cuts"])
             inequalities.extend(branches)
             multipliers = leaf["integer_multipliers"]
             if (type(multipliers) is not dict or set(multipliers) != {"nonnegative", "free"}
