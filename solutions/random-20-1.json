@@ -1,0 +1,22 @@
+{
+  "instance_id": "random-20-1",
+  "input_sha256": "67c229ca135baad32cd16210da4e6e13197f16d6a69f76791b3886b91232d6d3",
+  "route": [
+    2,
+    15,
+    4,
+    16,
+    14
+  ],
+  "amounts": [
+    182,
+    "12282/107",
+    85,
+    "9078/107",
+    "7209/107"
+  ],
+  "objective_exact": "28569/458",
+  "source_file": "runs/v8-20261119/formal-history/records/random-20-1__candidate.json",
+  "source_sha256": "ada607ce7fac8d5454321533610a68b1528a53da173886bbd9f6a24c740bd4af",
+  "source_record": "best_witness"
+}

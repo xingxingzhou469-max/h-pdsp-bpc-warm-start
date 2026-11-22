@@ -1,0 +1,40 @@
+{
+  "instance_id": "blind-03",
+  "input_sha256": "4176152c6056bdba2db7e6e30bcf660cfc9f9540d785c463c78e276544ef3b5c",
+  "route": [
+    1,
+    5,
+    3,
+    13,
+    15,
+    8,
+    9,
+    11,
+    14,
+    6,
+    7,
+    2,
+    10,
+    12
+  ],
+  "amounts": [
+    286,
+    "121836/571",
+    286,
+    "27456/571",
+    "22308/571",
+    "32604/571",
+    "17732/571",
+    "19448/571",
+    "34320/571",
+    "24024/571",
+    "26884/571",
+    428,
+    "26215/104",
+    "18297/104"
+  ],
+  "objective_exact": "490282/523",
+  "source_file": "runs/v8-20261119/formal-history/records/blind-03__candidate.json",
+  "source_sha256": "b874b40a5b011028a61f1b0c074b4e124608e22f6e11027e9ea9ee152650539b",
+  "source_record": "best_witness"
+}

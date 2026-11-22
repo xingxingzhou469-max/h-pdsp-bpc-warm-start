@@ -1,0 +1,22 @@
+{
+  "instance_id": "hfb-d1",
+  "input_sha256": "531bf844337186e49df617df5c95d16289c374ff4f25019ea692f159cc5a96e3",
+  "route": [
+    2,
+    7,
+    3,
+    8,
+    5
+  ],
+  "amounts": [
+    20000,
+    "64028000/4239",
+    12014,
+    "23418241/2826",
+    "73103969/8478"
+  ],
+  "objective_exact": "542829384/27319",
+  "source_file": "runs/v8-20261119/formal-history/records/hfb-d1__candidate.json",
+  "source_sha256": "efc58ff6a115625c847651f254e643a3a0834387887bbd2397d0dc535419dd61",
+  "source_record": "best_witness"
+}

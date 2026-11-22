@@ -1,0 +1,36 @@
+{
+  "instance_id": "random-20-3",
+  "input_sha256": "d93b04458ccbecea2de300489035609ed9218cfcbb7ce56e602a202f6b075983",
+  "route": [
+    2,
+    10,
+    3,
+    9,
+    8,
+    16,
+    4,
+    15,
+    14,
+    1,
+    11,
+    6
+  ],
+  "amounts": [
+    182,
+    "13489/240",
+    62,
+    "1645/24",
+    "2303/40",
+    "5593/120",
+    85,
+    "7567/120",
+    "2961/80",
+    126,
+    "630/11",
+    "756/11"
+  ],
+  "objective_exact": "65352/229",
+  "source_file": "runs/v8-20261119/formal-history/records/random-20-3__candidate.json",
+  "source_sha256": "00547eb3e195a325e71557a50bd714cde59f416692dbd1a592f310a08da0ca77",
+  "source_record": "best_witness"
+}

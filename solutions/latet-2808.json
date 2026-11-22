@@ -1,0 +1,36 @@
+{
+  "instance_id": "latet-2808",
+  "input_sha256": "40fec9c0309e95fb2bb136c6e704020bd1cc2dd723a68a24d84a06bf5abcca8a",
+  "route": [
+    1,
+    8,
+    64,
+    62,
+    15,
+    28,
+    29,
+    32,
+    3,
+    36,
+    13,
+    7
+  ],
+  "amounts": [
+    12000,
+    "684000/557",
+    "750000/557",
+    "262500/557",
+    "300000/557",
+    "3000000/557",
+    "750000/557",
+    "937500/557",
+    12000,
+    "60000/13",
+    "600000/91",
+    "72000/91"
+  ],
+  "objective_exact": "21501600/1633",
+  "source_file": "runs/v8-20261119/formal-history/records/latet-2808__candidate.json",
+  "source_sha256": "41debc93cf8bdafcfac4e130602a9350564952a5afa2ee1ed43422805a801346",
+  "source_record": "best_witness"
+}
