@@ -1,0 +1,52 @@
+{
+  "algorithm": "H-PDSP multi-vehicle v2.1 (certified Stage B release)",
+  "stage_b_seal_timestamp": "2026-11-25T00:36:14+08:00",
+  "formal_baseline_panel_timestamp": "2026-11-25T16:40:04+08:00",
+  "adaptations": {
+    "multi_vehicle/engine/primal.py": "Cross-platform C++ compiler lookup (CXX env / clang++ / c++) and default native build directory multi_vehicle/build/.",
+    "multi_vehicle/engine/pricing_core.py": "Cross-platform C++ compiler lookup (CXX env / c++ / clang++) and default native build directory multi_vehicle/build/.",
+    "multi_vehicle/baselines/mv_lns.py": "Role-normalized mixed-role sampling fix (equal pickup/delivery prior when both roles are present; conditional on sole role otherwise).",
+    "multi_vehicle/baselines/segment.py": "Package-safe fallback import for multi_vehicle.engine.primal_vendor.allocation."
+  },
+  "verifier_files_byte_identical_to_frozen": [
+    "multi_vehicle/engine/common.py",
+    "multi_vehicle/engine/fair.py",
+    "multi_vehicle/engine/polygon.py",
+    "multi_vehicle/engine/primal_vendor/allocation.py",
+    "multi_vehicle/engine/primal_vendor/fleet.py",
+    "multi_vehicle/engine/primal_vendor/partition.py",
+    "multi_vehicle/engine/primal_vendor/rebuild.cpp",
+    "multi_vehicle/engine/primal_vendor/routes.py",
+    "multi_vehicle/engine/screen.py",
+    "multi_vehicle/engine/supplier_split.py",
+    "multi_vehicle/engine/tree.py",
+    "multi_vehicle/engine/upper.py",
+    "multi_vehicle/engine/upper_src/price.cpp",
+    "multi_vehicle/engine/upper_src/rank_reference.cpp",
+    "multi_vehicle/engine/verify.py"
+  ],
+  "engine_source_hashes": {
+    "multi_vehicle/engine/common.py": "973d99e3f9f655c1d7bdc9cea491c01f48f476676fe0736e1719b4757dfa4c99",
+    "multi_vehicle/engine/fair.py": "d4b4b3b9d8c63ae926c5f80a8d7b76eac45fd56656add28d66d8a5cae0f89614",
+    "multi_vehicle/engine/polygon.py": "cf845379aed4f2a280619a52fe5a135f9d66f014e5270fca4b21dc74680e6fb8",
+    "multi_vehicle/engine/pricing_core.py": "27bed76aafc305f18faa18b87b7cc06d4a925dab50ee23ee9c21560ffb9e51ef",
+    "multi_vehicle/engine/primal.py": "459c75086c5f85313127e72eb1591eb634daa0f2ead71364ba71d92ee3bf25aa",
+    "multi_vehicle/engine/primal_vendor/allocation.py": "7b0313ef849cf246e911ed270539ec17fa4369e64e4ed9dc605160e7cc8f396e",
+    "multi_vehicle/engine/primal_vendor/fleet.py": "5af17436b5556189d68ee149cfe3fba16df406a47db699c38121794999874623",
+    "multi_vehicle/engine/primal_vendor/partition.py": "71b1b2c76818af108b52561f0ff496dac6d939ec0b6752ab35ed987aea8950ab",
+    "multi_vehicle/engine/primal_vendor/rebuild.cpp": "8dee367223c45b2d5246ebf18fb0640d2d01917c41a5a1236d700ffdc427b7e0",
+    "multi_vehicle/engine/primal_vendor/routes.py": "cc41c52ddf9dc8925c7f7d34e77696198c65b76fe27f1d8c4a9a6d3a37e86123",
+    "multi_vehicle/engine/screen.py": "00142bf3d337c8dd7fb0abcc3298ff42cc179fac6a24399bf2433f6d023d7ab4",
+    "multi_vehicle/engine/supplier_split.py": "c754a5e2b1dea6e27a27b10fca4490b853e5e48be090d9b65dc42bf1f7fc3ec5",
+    "multi_vehicle/engine/tree.py": "7ff2ed4e47784141d3f1cfbb245cc1eabaa1e02dbaa7fdae8272ef76fc601ceb",
+    "multi_vehicle/engine/upper.py": "3edbaa4e338aeda97e52838a7e1a45502d1634248d11248d5c8a30cb4924b34c",
+    "multi_vehicle/engine/upper_src/price.cpp": "059dd2393d98d90a2e3de7934f5a46036448f491f736f04466c9565266c3a575",
+    "multi_vehicle/engine/upper_src/rank_reference.cpp": "08ad962279ac4345599b37179d7e43ac98870c07c1019c9d0f7fe8d417f605ce",
+    "multi_vehicle/engine/verify.py": "c5b307b380176a8137c3b9712d9e59f72a88b6bcfbdab58a591e1ab8842b6997"
+  },
+  "baseline_source_hashes": {
+    "multi_vehicle/baselines/site_milp.py": "b36f6788b804856819ea351a763510b0f2a23587108a451e569b811aac372220",
+    "multi_vehicle/baselines/mv_lns.py": "e4ea4e41423c4cc543bfef448b6b9769b402b640467404be94de6d23b5b0fa45",
+    "multi_vehicle/baselines/segment.py": "e7638b73a987eece25c91bb14dead0e93e35e758f18144ec478de981d461c4ea"
+  }
+}

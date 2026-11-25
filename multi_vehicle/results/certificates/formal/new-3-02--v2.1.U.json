@@ -1,0 +1,18 @@
+{
+ "kind": "U",
+ "score": "1000",
+ "source": "input_box",
+ "input_sha256": "a8e4713c3b7253f20a7d9707bdbf59d58936bd7c0919cf32066bca6bc3766f48",
+ "vehicles": 3,
+ "certificate": {
+  "method": "ng-product-v1",
+  "vehicles": 3,
+  "supports": [],
+  "grid": "continuous",
+  "quantity_cap": "1000",
+  "p_cap": "6319",
+  "p_step": null,
+  "q_step": null,
+  "upper": "1000"
+ }
+}

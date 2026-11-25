@@ -1,0 +1,31 @@
+{
+ "kind": "L",
+ "score": "3058/487",
+ "source": "site_milp_incumbent",
+ "input_sha256": "32af98dba072cdbb6586c35733e0f01907d73cb795fe187a0694537f22ca08a8",
+ "vehicles": 2,
+ "certificate": {
+  "routes": [
+   [
+    14,
+    4,
+    53,
+    16,
+    64,
+    15,
+    42
+   ]
+  ],
+  "amounts": [
+   [
+    "28",
+    "37",
+    "556/11",
+    "37",
+    "5421/110",
+    "37",
+    "4309/110"
+   ]
+  ]
+ }
+}

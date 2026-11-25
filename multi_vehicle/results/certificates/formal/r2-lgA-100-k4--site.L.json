@@ -1,0 +1,11 @@
+{
+ "kind": "L",
+ "score": "0",
+ "source": "idle_fleet",
+ "input_sha256": "353af69885c93bb24ae7ef9ead3f1a8f09dc0be933020c7f01c306ab1b58a287",
+ "vehicles": 4,
+ "certificate": {
+  "routes": [],
+  "amounts": []
+ }
+}

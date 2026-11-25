@@ -6,3 +6,8 @@ hpdp/*.dylib
 hpdp/*.so
 hpdp/chain-worker
 hpdp/.native-*/
+multi_vehicle/build/
+multi_vehicle/**/*.so
+multi_vehicle/**/*.dylib
+my-solution.json
+my-mv-*.json

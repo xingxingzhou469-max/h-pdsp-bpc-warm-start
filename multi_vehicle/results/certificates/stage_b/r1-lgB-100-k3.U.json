@@ -1,0 +1,16 @@
+{
+ "input_sha256": "7505c3d8dfed0a48ec63fca3703e36830ab7df44ee6c3f3f6264bf313015fdc7",
+ "vehicles": 3,
+ "score": "1000",
+ "certificate": {
+  "method": "ng-product-v1",
+  "vehicles": 3,
+  "supports": [],
+  "grid": "continuous",
+  "quantity_cap": "1000",
+  "p_cap": "5809",
+  "p_step": null,
+  "q_step": null,
+  "upper": "1000"
+ }
+}

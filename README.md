@@ -1,98 +1,162 @@
-# 单车 H-PDSP V8 与 BPC 初始解
+# H-PDSP 精确上下界求解器与独立证明复验仓库（v2.1 多车 + v1.1 单车）
 
-在同一张取送网络上，把已有单车路线交给一辆车，其余车辆暂时闲置，就得到多车 BPC 可以直接使用的第一个可行解。本仓库提供 **60 个实例各一份最终路线与逐站取送量**、生成新路线的 V8 源码，以及把路线加入列池并向 HiGHS 整数主问题提交初解的示例。
+本仓库提供人道主义取送问题（Humanitarian Pickup and Distribution Problem, H-PDSP；Eisenhandler & Tzur, *Operations Research* 2019 / *Transportation Science* 2019）的**完整可复现求解代码、修正论文对照基线、已封板实验结果表、全部端点可行见证与严格上界证书**，以及零第三方依赖的独立精确复验器。
 
-## 直接使用已有结果
+所有下界 $L$ 与严格上界 $U$ 均以 Python `fractions.Fraction` 零容差核验；纯标准库复验器（`python3 -B -S`）在不加载 HiGHS、NumPy、SciPy 或 C++ 求解器的前提下，可从原始输入 JSON 独立重放全部严格证明并确认 $L \le U$。
 
-在仓库根目录运行下面的命令。读取和验证现成结果只需 Python 标准库。
+---
+
+## 目录导航
+
+- **多车 H-PDSP `v2.1`（本版本新增主线）**
+  - [多车核心结果汇总](#一多车-h-pdsp-v21-核心实验结果) · [多车快速复验与求解](#二多车快速开始复验--求解) · [论文基线对照](#三同条件论文方法对照25-例正式面板)
+  - [数学模型、四类严格上界证明与学术边界](multi_vehicle/docs/MODEL_AND_PROOFS.md) · [论文对照基线实现说明](multi_vehicle/baselines/README.md) · [多车源码指纹清单](multi_vehicle/SOURCE.json)
+- **单车 H-PDSP `V8` 与 BPC 初解（完整保留 `v1.1`）**
+  - [单车 60 例精确上下界、V8 求解与 BPC 接入](#四单车-h-pdsp-v8-与-bpc-初解保留-v11)
+
+---
+
+## 一、多车 H-PDSP `v2.1` 核心实验结果
+
+### 1. Stage B 独立盲测（96 实例，Apple M4，单线程 60 秒冷启动）
+
+覆盖 4 组独立盲测规模（$n \in \{19, 40, 60, 100\}$）$\times$ 3 种车队规模（$K \in \{2, 3, 4\}$），每单元 8 例共 96 例。四臂（`polygon_v1`、`joint_v2.1`、`bare_v2.1`、`upgrade_v2.1`）各自从空车队冷启动 60 秒。
+
+- **严格 $\le 5\%$ 认证（同实例共同 $L$）**：**`v1` 57/96 $\rightarrow$ `v2.1` 78/96**（新增 **+21**、丢失 **0**；仅用 `upgrade` 下界同样为 **78/96**）。
+- **严格证优（$L = U$，精确零差距）**：**25/96**（其中 $n=19$ 全组 **24/24 全部严格闭合**，$n=40, K=2$ 闭合 1/8）。
+- **上界单调性（`joint_v2.1` vs `polygon_v1`）**：**68 胜 / 28 平 / 0 负**（最差退化 `0.000%`）。
+- **找解对比（`upgrade_v2.1` vs `bare_v2.1`）**：**95/96 胜或平**（唯一微负 `-0.0055%`，仍处于 `0.19%` 差距内）。
+- **Stage B 预登记门槛 G1–G5 全部通过**，全部 96 例严格区间满足 $L \le U$，0 冲突。
+
+| 站点数 $n$ | 车辆数 $K$ | 例数 | $U$ 降 / 平 / 升 | $U$ 降幅中位数 | 严格 $\le 5\%$（`v1` $\to$ `v2.1`） | `v2.1` 严格证优 |
+| ---: | ---: | ---: | :---: | ---: | :---: | ---: |
+| 19 | 2 | 8 | 8 / 0 / 0 | 12.219% | 0/8 $\to$ **8/8** | **8/8** |
+| 19 | 3 | 8 | 8 / 0 / 0 | 8.462% | 2/8 $\to$ **8/8** | **8/8** |
+| 19 | 4 | 8 | 8 / 0 / 0 | 1.312% | 5/8 $\to$ **8/8** | **8/8** |
+| 40 | 2 | 8 | 8 / 0 / 0 | 1.166% | 6/8 $\to$ **8/8** | 1/8 |
+| 40 | 3 | 8 | 7 / 1 / 0 | 0.246% | 3/8 $\to$ **4/8** | 0/8 |
+| 40 | 4 | 8 | 0 / 8 / 0 | 0.000% | 7/8 $\to$ **7/8** | 0/8 |
+| 60 | 2 | 8 | 8 / 0 / 0 | 0.653% | 7/8 $\to$ **7/8** | 0/8 |
+| 60 | 3 | 8 | 4 / 4 / 0 | 0.019% | 8/8 $\to$ **8/8** | 0/8 |
+| 60 | 4 | 8 | 1 / 7 / 0 | 0.000% | 8/8 $\to$ **8/8** | 0/8 |
+| 100 | 2 | 8 | 8 / 0 / 0 | 1.750% | 4/8 $\to$ **4/8** | 0/8 |
+| 100 | 3 | 8 | 5 / 3 / 0 | 1.249% | 3/8 $\to$ **4/8** | 0/8 |
+| 100 | 4 | 8 | 3 / 5 / 0 | 0.000% | 4/8 $\to$ **4/8** | 0/8 |
+| **合计** | — | **96** | **68 / 28 / 0** | — | **57/96 $\to$ 78/96** | **25/96** |
+
+逐例精确分数与证书索引：[stage_b_96_blind.csv](multi_vehicle/results/stage_b_96_blind.csv)。
+
+### 2. 真实 Latet 案例（20 配置，Apple M4，单线程 60 秒冷启动）
+
+10 份以色列 Latet 原始工作簿（逐例核对 SHA-256 与论文印刷供给 10/10 一致）$\times$ $K \in \{2, 3\}$，$T=540$：
+
+- **$K=2$（原论文双车口径）**：严格 $\le 5\%$ 认证 **10/10**，最差精确差距 **3.639%**。
+- **$K=3$（本研究多车扩展）**：严格 $\le 5\%$ 认证 **9/10**（`v1` 为 6/10），最差精确差距 **5.537%**（`latet-2209-k3`；在 Kaggle CPU 3600 秒长预算下收敛至 `5.255%`）。
+- **合计**：60 秒单次冷启动下 **19/20 严格 $\le 5\%$**。逐例表：[stage_b_20_latet.csv](multi_vehicle/results/stage_b_20_latet.csv)。
+
+### 3. 跨硬件补充实验（Kaggle CPU，单列汇报）
+
+为避免跨硬件混报，云端补充结果单独归档于 [cloud_supplementary.csv](multi_vehicle/results/cloud_supplementary.csv)：
+- **0.5–2 小时难例压界（9 臂）**：4/9 达到严格 $\le 5\%$（包括 `r4-lgA-100-k2` 3.624%、`r2-lgA-100-k4` 4.856%）。
+- **多种子稳定性（6 例 $\times$ 10 种子 = 60 臂，60 秒）**：严格上界 $U$ 跨种子方差极小，60 秒差距波动主要来自找解下界 $L$。
+- **3600 秒长预算基线对照（12 臂）**：在长预算下 `v2.1` 仍保持完整严格上下界；该早期云端批中 `mv_lns` 使用修正前抽样，已在表中明确标注。
+
+---
+
+## 二、多车快速开始（复验 & 求解）
+
+### 1. 零依赖独立复验已归档的全部多车证明（仅需 Python 3 标准库）
+
+无需安装 `numpy`、`scipy`、`highspy`，也无需编译 C++：
 
 ```bash
-python3 warm_start.py instances/random-20-1.json solutions/random-20-1.json --vehicles 2
+# 快速抽样复验（覆盖 19/40/60/100 站、Latet、4 类严格上界机制与多法交叉检查，实测约 30 秒）
+python3 -B -S verify_multi.py --sample
+
+# 全量复验：Stage B 96 盲图 + 20 Latet + 25 例正式基线面板（Apple M4 实测约 6.8 分钟）
+# 共 141 个严格区间、216 份可行见证 L、141 份严格上界证书 U，强制校验 0 个求解器模块加载
+python3 -B -S verify_multi.py
 ```
 
-例中第 1 辆车的路线是 `0 → 2 → 15 → 4 → 16 → 14 → 0`，第 2 辆车闲置。逐站取送量依次为 `182, 12282/107, 85, 9078/107, 7209/107`。含服务及回仓的总时间为 **66**，车队初始目标为 **28569/458**。输出 JSON 中的 `routes` 和 `amounts` 每行对应一辆实际使用的车，省略首尾仓库。整数和分数字符串保留原始精度。
+### 2. 编译多车原生扩展并在新实例上求解
 
-程序核对输入文件的 SHA-256 和实例 ID，再逐站复算有向路时、服务时间、取送量、供给和车载库存，最后按全体机构人口核对车队目标。传入生成该解时的原始 JSON 即可。车数通过 `--vehicles` 单独指定。如果换了路网、车辆容量或时限，可用下节的 V8 命令为目标实例生成新的初解。
-
-## 交给 BPC 继续求解
-
-以下命令使用 Python 3.13。首次运行 BPC 时安装依赖。
+首次运行求解器需安装依赖（Python 3.13+ 及 C++17 编译器）并编译两份 C++ 扩展（`rebuild.cpp` 与 `price.cpp`）：
 
 ```bash
-python3.13 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python warm_start.py instances/random-20-1.json solutions/random-20-1.json --vehicles 2 --run-seconds 10
+
+# 编译多车 v2.1 原生扩展（输出至 multi_vehicle/build/）
+python3 multi_vehicle/build_native.py
+
+# 使用 v2.1 求解（默认前半预算找解 L，后半预算求严格上界 U）并导出独立证明
+python3 solve_multi.py multi_vehicle/data/formal_panel/strB-19-k2.json \
+  --seconds 10 --output my-mv-solution.json --proof-output my-mv-proof.json
+
+# 用纯标准库进程独立复验刚生成的解与严格上界证书
+python3 -B -S verify_multi.py --single multi_vehicle/data/formal_panel/strB-19-k2.json \
+  --solution my-mv-solution.json --proof my-mv-proof.json
+
+# 同入口运行论文对照基线（site / mv_lns / segment）
+python3 solve_multi.py multi_vehicle/data/formal_panel/strB-19-k2.json \
+  --method mv_lns --seconds 10 --output my-mv-lns.json
 ```
 
-`initial` 是读入的单车可行解，`final` 是结束时重新验算的车队解。BPC 将给定路线登记为初始列并保留其目标值。搜索或下探找到更好的车队时，整数主问题会收到更新后的整套初解，其中包含选列变量、机构配送量和公平性差额。`mip_start.routes` 记录实际提交的路线，`mip_start.accepted` 记录 HiGHS 的可行性判定。若时间在进入整数主问题前用尽，这一项为 `null`。
+---
 
-接自己的 BPC 时，可以直接取出已验路线和数量。以下示例调用本仓库的定价与下探入口。
+## 三、同条件论文方法对照（25 例正式面板）
 
-```python
-from warm_start import load_start
-from mvp.bpc import BpcSolver
+在 Apple M4 单线程、种子 7、每臂 60 秒冷启动下，将冻结 `v2.1` 与三组论文方法在 25 个实例（13 个既有难例含 4 个 Latet + 12 个冻结后新生成的 100 站独立盲图）上同台比较。**注意预算分配差异**：`v2.1` 用 30 秒找解 $L$ + 30 秒求严格上界 $U$，三个对手全部 60 秒仅用于找解 / MILP。
 
-instance, start = load_start("instances/random-20-1.json",
-                             "solutions/random-20-1.json", vehicles=2)
-routes, value, record = BpcSolver(instance, 2).solve(
-    initial_routes=start["routes"], seconds=10)
-print(record["seed"]["column_indices"], record["best_value_exact"])
-```
+| 对手方法（60 秒全找解 / MILP） | `v2.1` 可行值胜 / 平 / 负 | 旧组（13 例） | 新 100 站盲图（12 例） | Latet（4 例） | 相对提升中位数 | 严格上界能力 |
+| --- | :---: | :---: | :---: | :---: | ---: | --- |
+| `Site-MILP`（HiGHS 三索引） | **25 / 0 / 0** | 13 / 0 / 0 | 12 / 0 / 0 | 4 / 0 / 0 | +10,227%（17/25 硬超时） | 仅浮点数值对偶 `numeric_U` |
+| 修正 `MV-LNS`（角色归一化） | **18 / 1 / 6** | 10 / 1 / 2 | 8 / 0 / 4 | **4 / 0 / 0** | +1.531% | 无 |
+| 修正 `TS Super-Segment`（60 列受限复现） | **18 / 1 / 6** | 10 / 1 / 2 | 8 / 0 / 4 | **4 / 0 / 0** | +1.536%（3/25 硬超时） | 无（受限池非全局界） |
 
-示例采用同仓同质车、至多使用 K 辆、每车有独立时限、全车队每站最多访问一次的模型。增加路线后，要把各机构收到的配送量合并，再计算全车队公平目标。例如两家等人口机构各收到 1 单位时，两条路线分别计分各为 1/2，合并后的车队目标为 2。单车最优性记录只适用于该单车问题。示例返回已验可行下界，受限主问题的求解状态只对应当前列池。
+- `v2.1` 在该 25 例面板上以自身 30 秒下界实现 **13/25 严格 $\le 5\%$**（旧组 7/13、新 100 站组 6/12；`strB-19-k2` 严格证优 `490699/689`），且四个方法的全部 100 份可行下界均满足 $L \le U_{\text{v2.1}}$。
+- **诚实边界**：在 6/25 例（尤其是高供给 100 站图）上，使用完整 60 秒找解的修正 `MV-LNS` 取得了略高于 `v2.1`（30 秒找解切片）的可行值；100 站紧时间难例（如 `new-2-01`、`new-3-01`）的 60 秒严格差距仍在 9%–18%，是后续改进方向。正式批中有 61/125 臂与外部系统 CPU 负载样点（$\ge 40\%$）相交，洁净对与相交对的 5% 达标结论一致。
+- 逐例 100 臂精确数据与证书：[formal_25_baselines.csv](multi_vehicle/results/formal_25_baselines.csv) · 基线细节：[multi_vehicle/baselines/README.md](multi_vehicle/baselines/README.md)。
 
-## 在新实例上运行 V8
+---
 
-单车入口使用研究阶段最终封存的 **V8**。首次运行需具备支持 C++20 的编译器，构建一次即可。预存的 60 份初解可以直接导入。
+## 四、单车 H-PDSP `V8` 与 BPC 初解（保留 `v1.1`）
+
+本仓库完整保留单车 `v1.1.0` 的全部数据、源码、独立证明与 BPC 暖启动接入，原有命令与测试均保持兼容：
+
+- **60 个单车实例**（48 个 Eisenhandler & Tzur 公开算例 + 12 个盲测算例）：纯标准库全量复验得到 **52 例严格最优、8 例开放且附可重放整数对偶证书**。[60 例索引](index.csv) · [单车源码指纹](single_vehicle/SOURCE.json) · [8 例开放证书](proofs/open_bounds/README.md)
+- **核心命令**：
 
 ```bash
-python single_vehicle/build_native.py
-python solve_single.py instances/random-20-1.json --seconds 60 --output my-solution.json
-python warm_start.py instances/random-20-1.json my-solution.json --vehicles 2
-```
+# 1. 纯标准库验证单车已有初解并检查车队目标（K=2，单车路线作为初解）
+python3 warm_start.py instances/random-20-1.json solutions/random-20-1.json --vehicles 2
 
-将两条命令的实例路径替换为自己的规范 JSON。`travel[i][j]` 是有向弧时，`service`、`supply`、`population` 使用同一节点编号，仓库为 0。`capacity` 为车容，`limit` 为单条路线含服务及回仓的时限。可参考随包的任一实例。输出 `feasible` 表示在预算内找到且验过一条路线。`no_witness` 表示未取得可核验的非空初解。搜索按墙钟给定预算，初始化或一次原生调用可能使程序稍晚退出。[封存来源及交付源码指纹](single_vehicle/SOURCE.json)
-
-## 独立复验单车上界与最优性
-
-在仓库根目录运行下列命令。第一条检查全部 60 例，第二条只检查一个已闭合和一个未闭合的实例。复验使用 Python 3.13 标准库和支持 C++20 的编译器，部分算例会在临时目录编译独立的精确检查程序。整个流程直接读随包实例、解和上界材料，无需安装 HiGHS，也无需启动 V8。
-
-```bash
+# 2. 纯标准库独立复验全部 60 例单车严格上下界（需 C++20 编译器用于部分闭合检查）
 python3 -B -S verify_bounds.py
-python3 -B -S verify_bounds.py blind-01 random-60-6
+
+# 3. 编译单车 V8 原生组件并在新实例上求解与导出独立证明
+python3 single_vehicle/build_native.py
+python3 solve_single.py instances/random-20-1.json --seconds 60 --output my-solution.json --proof-output my-proof.json
+python3 -B -S solve_single.py instances/random-20-1.json --verify-proof my-proof.json
+
+# 4. 将单车初解送入多车 BPC（需安装 requirements.txt）
+python3 warm_start.py instances/random-20-1.json solutions/random-20-1.json --vehicles 2 --run-seconds 10
 ```
 
-每行 JSON 都给出精确分数 `lower_exact` 和 `upper_exact`。下界来自对给定路线的零容差复算，上界来自该例对应的独立证明，两者相等才输出 `strict_optimal`。例如 `blind-01` 的两端均为 `63875/139`；`random-60-6` 的区间为 `[249553/819, 252650/819]`。全量复验得到 **52 例相等、8 例仍有正差距**。[逐例上界及验证入口](index.csv)
+---
 
-可用的上界证据有不同形式。整数对偶证书保存了分支叶、割和乘子，验证器从原始模型逐叶重建并检查树的完整性。部分已闭合的实例使用供给上界或时间树即可证明，其余使用独立的访问集合、供点分区或反向路线检查程序重新覆盖所有可能改善的分支。这些计算需要一定时间。8 个开放实例均附有可重放的整数证书。[归档对偶证书及来源](proofs/dual/sources.json) · [8 个开放实例的证书](proofs/open_bounds/README.md)
+## 五、全套自动化回归测试
 
-对于新实例，可以在求解时另存本次运行的上界材料，随后在独立进程复核。
+完成依赖安装及双引擎原生构建后，可运行全部单车 + 多车自动化回归（覆盖初解验算、HiGHS MIP 初解接入、单车证明导出、多车纯标准库 `-B -S` 重放、篡改拒收、实时 `v2.1` 证优闭环及三组基线冒烟）：
 
 ```bash
-python solve_single.py instances/random-20-1.json --seconds 10 --output route.json --proof-output proof.json
-python -B -S solve_single.py instances/random-20-1.json --verify-proof proof.json
+python3 single_vehicle/build_native.py
+python3 multi_vehicle/build_native.py
+python3 -m unittest discover -s tests -v
 ```
 
-`replayable` 记录能由文件独立验出的上界，包括解析先验及本次取得的整数对偶证书。`trusted_search` 单列精确搜索内核报告的全局界。搜索内核可能已经闭合，而本次导出的独立证据仍有间隙；复验命令只按可重放部分判定。多车 BPC 示例的结果仍按可行解解读。
+## 参考文献
 
-## 数据和验收
-
-48 个公开算例来自 Eisenhandler 与 Tzur 的 H-PDSP 数据，12 个是本项目的历史盲测算例。每例只收录一份已验证的路线。52 份达到历史严格最优值，另外 8 份保留已核验的最好可行值。记录来自多次独立运行，其中 55 份选自 V8、4 份选自独立研究路线、1 份选自 C1 长时运行。索引记录实例文件、解文件、输入和解的指纹，以及研究归档中的原件位置。公开算例使用随包规范 JSON 的数值口径。[60 例索引](index.csv) · [作者数据页](https://ohadeis.wixsite.com/ohadeis/research) · [论文](https://doi.org/10.1287/opre.2018.1751)
-
-| 检查 | 结果 |
-| --- | --- |
-| 60 份最终路线 | 单车及车队验算器以零容差得到相同目标。固定路线重新配量后，60 份逐站数量也完全一致。 |
-| 60 次整数主问题初解 | 逐例设 K=2，仅放入原路线。HiGHS 对 60 个完整起点均返回可行，回读路线和目标与输入一致。 |
-| 单车小图穷举 | 38 个原有小图和 120 个固定种子新图共枚举 1,713 条可行路线，逐路线独立线性规划的精确上下界一致。V8 在 108 个有解图上得到穷举最优值，50 个无解图均返回无初解。新图种子为 20261122。 |
-| 接入回归 | 覆盖超时路线、站点冲突、超出车数、目标值篡改、精确小数时限、定价对偶符号、HiGHS 接收完整初解，以及双车改进。 |
-
-启用原生搜索组件后，原单车工程的 288 项测试全部通过。随包回归覆盖初解、整数主问题接入和单车上界导出。
-
-本次修正了接入示例对非法初解的处理，并把显式整数起点送入 HiGHS。修正了旧构造定价从单个供点出发时无法生成首列的问题，以及二进制浮点舍入会漏掉恰好按时回仓路线的问题。后一个回归使用三段各 0.1、时限 0.3 的有向路线。原生构建与完整接入流程已在 Apple Silicon 的 macOS 上实测。构建脚本另含 Linux 分支。
-
-安装上述依赖并完成原生构建后，可重跑随包验收。其中一项会把 60 个初解逐个提交给真实的 HiGHS 主问题。
-
-```bash
-python -m unittest discover -s tests -v
-```
+1. Eisenhandler, O., & Tzur, M. (2019). The humanitarian pickup and distribution problem. *Operations Research*, 67(1), 10–32. https://doi.org/10.1287/opre.2018.1751
+2. Eisenhandler, O., & Tzur, M. (2019). A segment-based formulation and a matheuristic for the humanitarian pickup and distribution problem. *Transportation Science*, 53(5), 1389–1408. https://doi.org/10.1287/trsc.2019.0916

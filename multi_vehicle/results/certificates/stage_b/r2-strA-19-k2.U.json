@@ -1,0 +1,76 @@
+{
+ "input_sha256": "be00fc4d3b13fdba37e2b7b1929ccf999edd3a496d279449c083c811bf20c9ff",
+ "vehicles": 2,
+ "score": "48125/127",
+ "certificate": {
+  "method": "exact-fleet-route-screen-v3",
+  "threshold": "0",
+  "required": [],
+  "forbidden": [],
+  "polygon": null,
+  "maximizing_routes": [
+   [
+    3,
+    17,
+    4,
+    13,
+    12
+   ],
+   [
+    1,
+    2,
+    15,
+    9
+   ]
+  ],
+  "maximizing_witness": {
+   "routes": [
+    [
+     3,
+     17,
+     4,
+     13,
+     12
+    ],
+    [
+     1,
+     2,
+     15,
+     9
+    ]
+   ],
+   "amounts": [
+    [
+     "250",
+     "250",
+     "375",
+     "875/6",
+     "1375/6"
+    ],
+    [
+     "125",
+     "250",
+     "21375/101",
+     "16500/101"
+    ]
+   ]
+  },
+  "upper": "48125/127",
+  "nonthreat_upper": "0",
+  "threat_rows": null,
+  "support_indices": [],
+  "slack": [],
+  "stats": {
+   "prefixes": 2443,
+   "routes": 2340,
+   "suffix_states": 0,
+   "fleet_steps": 2058,
+   "rank_subsets": 9,
+   "profile_checks": 2,
+   "profile_fleets": 3,
+   "masks": 962,
+   "rank_chains": 4
+  },
+  "implied_required": []
+ }
+}

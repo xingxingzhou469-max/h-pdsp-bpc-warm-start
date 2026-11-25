@@ -1,0 +1,35 @@
+{
+ "kind": "U",
+ "score": "490699/689",
+ "source": "route_screen",
+ "input_sha256": "e4bb80039cde3935f3de7bb430867fc9f1e754e5ab06276f3faa0402d51a70f1",
+ "vehicles": 2,
+ "certificate": {
+  "method": "exact-fleet-route-screen-v3",
+  "threshold": "490699/689",
+  "required": [],
+  "forbidden": [],
+  "polygon": null,
+  "maximizing_routes": null,
+  "maximizing_witness": null,
+  "upper": "490699/689",
+  "nonthreat_upper": "490699/689",
+  "threat_rows": null,
+  "support_indices": [],
+  "slack": [],
+  "stats": {
+   "prefixes": 336711,
+   "routes": 199037,
+   "suffix_states": 0,
+   "fleet_steps": 5189,
+   "rank_subsets": 319,
+   "profile_checks": 84,
+   "profile_fleets": 0,
+   "masks": 18156,
+   "rank_chains": 77
+  },
+  "implied_required": [
+   11
+  ]
+ }
+}

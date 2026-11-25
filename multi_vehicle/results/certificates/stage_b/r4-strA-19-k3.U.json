@@ -1,0 +1,97 @@
+{
+ "input_sha256": "8b4e0e4e4c46f4fe6534ae3c591208a2ff2806d0b009624a3c71da139209c682",
+ "vehicles": 3,
+ "score": "425375/619",
+ "certificate": {
+  "method": "exact-fleet-route-screen-v3",
+  "threshold": "0",
+  "required": [],
+  "forbidden": [],
+  "polygon": null,
+  "maximizing_routes": [
+   [
+    4,
+    1,
+    6,
+    11,
+    9,
+    10
+   ],
+   [
+    2,
+    13,
+    14,
+    17
+   ],
+   [
+    3,
+    15,
+    18,
+    12
+   ]
+  ],
+  "maximizing_witness": {
+   "routes": [
+    [
+     4,
+     1,
+     6,
+     11,
+     9,
+     10
+    ],
+    [
+     2,
+     13,
+     14,
+     17
+    ],
+    [
+     3,
+     15,
+     18,
+     12
+    ]
+   ],
+   "amounts": [
+    [
+     "125",
+     "250",
+     "8250/173",
+     "22125/173",
+     "14250/173",
+     "20250/173"
+    ],
+    [
+     "375",
+     "125",
+     "1750/13",
+     "1500/13"
+    ],
+    [
+     "250",
+     "7250/107",
+     "8250/107",
+     "11250/107"
+    ]
+   ]
+  },
+  "upper": "425375/619",
+  "nonthreat_upper": "0",
+  "threat_rows": null,
+  "support_indices": [],
+  "slack": [],
+  "stats": {
+   "prefixes": 4365,
+   "routes": 4162,
+   "suffix_states": 0,
+   "fleet_steps": 38310,
+   "rank_subsets": 18,
+   "profile_checks": 3,
+   "profile_fleets": 8,
+   "masks": 1859,
+   "rank_chains": 21
+  },
+  "implied_required": []
+ }
+}
