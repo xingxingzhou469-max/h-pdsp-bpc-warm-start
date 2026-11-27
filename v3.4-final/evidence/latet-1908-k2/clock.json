@@ -1,0 +1,48 @@
+{
+  "case": "latet-1908-k2",
+  "checkpoints": [
+    60
+  ],
+  "checks": "m4-v33-timed-rows",
+  "command": [
+    "python3",
+    "-B",
+    "runs/mv-v34-final/solve_fleet.py",
+    "examples/latet-1908-k2.json",
+    "--out",
+    "output/latet-1908-k2",
+    "--seconds",
+    "60",
+    "--seed",
+    "7",
+    "--checkpoints",
+    "60"
+  ],
+  "cpu": [
+    0
+  ],
+  "cutoff_reached": false,
+  "deadline_ns": 60000000000,
+  "ended_mono_ns": 431995861766250,
+  "ended_wall_ns": 1795756251144211000,
+  "engine": "frozen-v3.4-final",
+  "exit_code": 0,
+  "input_sha256": "e677b796decac152df802e5c5f34bffcba18c58b25c5bcc55eec2d41dc0e7213",
+  "kill_mono_ns": null,
+  "kill_wall_ns": null,
+  "method": "v34",
+  "schema": "v33-cloud-cold-clock-1",
+  "seed": 7,
+  "started_mono_ns": 431971656024458,
+  "started_wall_ns": 1795756226938411000,
+  "thread_env": {
+    "BLIS_NUM_THREADS": "1",
+    "HIGHS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  }
+}

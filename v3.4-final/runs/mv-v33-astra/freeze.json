@@ -1,0 +1,32 @@
+{
+  "schema": "mv-v33-public-development-freeze-1",
+  "created": "2026-11-26T21:25:38.398503+08:00",
+  "files": {
+    "solve_fleet.py": "0eec05783580e67118647c5edcdee501659f33d41fbeeac39c88f270a427567f",
+    "detours.py": "65ec1eb6514c9a8287f5e6672220fb43746872b335903d92180e8a9c36a49141",
+    "lower/solve.py": "d230f7cde465b387448c7e1214388f0b1ed89b51c4c388a701556c9b9d77a87a",
+    "lower/search.cpp": "cd267d2faa09b3dc5cabcce1d61dd2dec78d79c3ba061634c9268638af28c061",
+    "lower/build.sh": "1fa7fea1c8fba09541ca6dbf2bfab971de83486fc0415f7c3068a60d9131f92c",
+    "upper/solve.py": "a0243d4142087e96c2801a76129d45abc0b196458cc892bd7ca5ff593000eba4",
+    "upper/check.py": "f5af2b2e93aced536c8a750e51417a2ec0a3527c302a4c9cb209e1273097011b",
+    "upper/routeproof.py": "5000d9dc4a87b026c645a04a70a831cfdca1fa1523e52e147d38f194074b1c42",
+    "upper/hybrid.py": "bc683526473ca5344a816efcaf521ecd2bd268e59654a11195f0455f62646aaf",
+    "upper/kernel.cpp": "41b641ac38a60f02cd6c0c432ee8ffaa52b7e88d2477edd7ff8e2cbcaccd125e",
+    "upper/build.sh": "c13921fcc8dd902e0cf74aecab65f74ab79b83582c9e537bfed41687dbd1f6ec",
+    "selection/solve.py": "2fadf96b105c66247fff546b8999317b898891d6871c72629ae3a21dd388361e",
+    "selection/check.py": "0abf6673a07458663f38cf3cacbb7c41c9790fffe846188b371ec155c344de90",
+    "subsequence/solve.py": "82bd4e0dff6bdf963ad7aecc4eeffd19435f77bf2411f4b28ed98cda97b0f73a",
+    "subsequence/search.cpp": "6e37e864f01e139cae1274add101d7c85021bb7a99edba5bcf96399f88b5442d",
+    "subsequence/build.sh": "fd608b5f8158599669a832bb39cd963116da96ee1d0afe1ee36afc4e33f4384c",
+    "sparse/solve.py": "108eeb83a817e74c54c8cfbe7a8d146737123a4e66d09666a601687177158b07",
+    "sparse/check.py": "bad682356f22f98f8c3dcc61a17efa15fcff8b48e960d9e492f7d834adf66751",
+    "sparse/model.py": "14379d3fbce24b271a32fb40bbaf59c4d414273ae84137d1efa8aefa0907df89",
+    "sparse/price.cpp": "e2b3d1cc7bca3579938e353109c3db63fa9bf1e9de9d7b98e78a3e3c23da3aae",
+    "sparse/build.sh": "c4c11a11b5e28708620840d2809291515b3359235b9a9fd9b8a1302d28cd6bc6"
+  },
+  "observer_sha256": "b1eb466c53eca09624cd366b812c9a667b9da77da0d0f0725c25189388050f27",
+  "public_manifest_sha256": "736043a31094390866f04467c212af7540e0384b0b21a6c9596b3db423b68b08",
+  "protocol_sha256": "99104b315a50f405c74dd591c715abd762beca583b7cc941aa432412bd1efbe5",
+  "supersedes": "06e61dfb85a5467e1e0e331ae86f75e749fbb9dcdffab85729334335f81bf968",
+  "revision": "rc2"
+}

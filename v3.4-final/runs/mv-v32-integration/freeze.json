@@ -1,0 +1,450 @@
+{
+  "schema": "v32-freeze-1",
+  "frozen_at": "2026-11-26T15:31:44.214187+08:00",
+  "policies": {
+    "k2": {
+      "path": "runs/mv-v32-integration/harness/policy_k2.json",
+      "sha256": "2880b246cbeb938ce7b5f2e2aa83192e596b1af01fd58f7967135c706eb3a3ea"
+    },
+    "k3p": {
+      "path": "runs/mv-v32-integration/harness/policy_k3p.json",
+      "sha256": "1c4d7bfd4e57228e0bfad86400e687d12f77e6e4a7ed587c09e0150cdab4bcd5"
+    },
+    "router": "runs/mv-v32-integration/harness/portfolio_v32.py"
+  },
+  "pyvrp": {
+    "wheel": {
+      "project": "pyvrp",
+      "version": "0.14.1",
+      "sha256": "98e00572e27301a052e7478d9dfe385374c2562be66b8e592aee54752024b082",
+      "url": "https://files.pythonhosted.org/packages/2d/3a/e32a38e4a6c77ee203bd177204860a0086e704b2f40e78990b1224a043e4/pyvrp-0.14.1-cp313-cp313-macosx_13_0_arm64.whl",
+      "filename": "pyvrp-0.14.1-cp313-cp313-macosx_13_0_arm64.whl",
+      "dependencies": [
+        "matplotlib>=2.2.0",
+        "numpy>=1.15.2; python_version < \"3.12\"",
+        "numpy>=1.26.0; python_version >= \"3.12\"",
+        "tqdm>=4.64.1",
+        "vrplib>=1.4.0"
+      ]
+    },
+    "vrplib": {
+      "version": "2.2.0",
+      "url": "https://files.pythonhosted.org/packages/26/0d/377dd5a682ff62bb043ec08a8f70941d6e43ff71d4727942a34ab939f531/vrplib-2.2.0-py3-none-any.whl",
+      "sha256": "5bed28c4ff8cfaf99da7af3081e5627bc4108f0056abc25be0285d0a8b9ad104"
+    }
+  },
+  "phase1": {
+    "verify": "runs/mv-v32-integration/results/phase1/phase1_verify.json",
+    "verify_sha256": "471474eabfca97634a7b6af27ab033882f35e34680ac37a4513a830e9815df8a",
+    "manifest": "runs/mv-v32-integration/results/phase1/phase1_manifest.json",
+    "manifest_sha256": "759a702df4da4dfba8c09abd0d11443d05456f8cbd87110f46e74e63332c8b19",
+    "gate": {
+      "open100": {
+        "v2.1": {
+          "n": 18,
+          "median": 9.783538318015864,
+          "five": 0
+        },
+        "v3.1b": {
+          "n": 18,
+          "median": 7.385886676486926,
+          "five": 0
+        },
+        "v3.2": {
+          "n": 18,
+          "median": 5.775929414282006,
+          "five": 4
+        }
+      },
+      "old9": {
+        "v2.1": {
+          "n": 27,
+          "median": 4.487917146144994,
+          "five": 22
+        },
+        "v3.1b": {
+          "n": 27,
+          "median": 2.5070591255240866,
+          "five": 23
+        },
+        "v3.2": {
+          "n": 27,
+          "median": 3.4649082291712787,
+          "five": 22
+        }
+      },
+      "open150": {
+        "v2.1": {
+          "n": 0,
+          "median": null,
+          "five": 0
+        },
+        "v3.1b": {
+          "n": 3,
+          "median": 28.262371125422504,
+          "five": 0
+        },
+        "v3.2": {
+          "n": 3,
+          "median": 10.797181278980245,
+          "five": 0
+        }
+      },
+      "old9_detail": {
+        "latet-1908-k2": {
+          "mean_delta": -0.5161250163858478,
+          "worst_delta": -0.5161250163858478,
+          "lost5": [],
+          "v21": [
+            0.5183495749533485,
+            0.5183495749533485,
+            0.5183495749533485
+          ],
+          "v32": [
+            0.002224558567500664,
+            0.002224558567500664,
+            0.002224558567500664
+          ]
+        },
+        "latet-2209-k3": {
+          "mean_delta": 0.02569849800549721,
+          "worst_delta": 0.07338447339795451,
+          "lost5": [],
+          "v21": [
+            5.57850564329917,
+            5.735144872146915,
+            5.316227084752549
+          ],
+          "v32": [
+            5.582216663917707,
+            5.808529345544869,
+            5.316227084752549
+          ]
+        },
+        "latet-2808-k3": {
+          "mean_delta": 0.0,
+          "worst_delta": 0.0,
+          "lost5": [],
+          "v21": [
+            4.243335143841681,
+            4.255513108914113,
+            4.243335143841681
+          ],
+          "v32": [
+            4.243335143841681,
+            4.255513108914113,
+            4.243335143841681
+          ]
+        },
+        "latet-2809-k3": {
+          "mean_delta": 0.0,
+          "worst_delta": 0.0,
+          "lost5": [],
+          "v21": [
+            4.752497046397013,
+            5.167847746564988,
+            4.764665312763424
+          ],
+          "v32": [
+            4.752497046397013,
+            5.167847746564988,
+            4.764665312763424
+          ]
+        },
+        "strB-19-k2": {
+          "mean_delta": 0.0,
+          "worst_delta": 0.0,
+          "lost5": [],
+          "v21": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "v32": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "strB-40-k2": {
+          "mean_delta": -1.5017878034537484,
+          "worst_delta": -1.4808095030362,
+          "lost5": [],
+          "v21": [
+            4.992610679174966,
+            4.961759686492637,
+            4.945717732207479
+          ],
+          "v32": [
+            3.4649082291712787,
+            3.4649082291712787,
+            3.4649082291712787
+          ]
+        },
+        "strB-40-k3": {
+          "mean_delta": 0.0,
+          "worst_delta": 0.0,
+          "lost5": [],
+          "v21": [
+            5.624504885133351,
+            4.983446593483185,
+            3.3102320175627393
+          ],
+          "v32": [
+            5.624504885133351,
+            4.983446593483185,
+            3.3102320175627393
+          ]
+        },
+        "r1-lgA-60-k2": {
+          "mean_delta": -3.7404484064372134,
+          "worst_delta": -3.508594492561837,
+          "lost5": [],
+          "v21": [
+            4.487917146144994,
+            4.509056373949258,
+            4.862897712332369
+          ],
+          "v32": [
+            0.6376022503401388,
+            1.000461881387421,
+            1.000461881387421
+          ]
+        },
+        "r1-lgB-60-k3": {
+          "mean_delta": -0.010640688842504567,
+          "worst_delta": -0.007908317505209032,
+          "lost5": [],
+          "v21": [
+            0.025273117019382688,
+            0.023866024289015613,
+            0.02134306059488931
+          ],
+          "v32": [
+            0.017364799514173655,
+            0.008681645981877185,
+            0.012513689879723068
+          ]
+        }
+      },
+      "failures": [],
+      "pass": true,
+      "reasons": []
+    }
+  },
+  "baseline_v31b": {
+    "runs/mv-v31b-formal/freeze.json": "2a19068cf9e34e3884d44629c8acec00ad85727e1dbb1fbcd27e121d1b863d9d",
+    "runs/mv-v31b-formal/m4/worker_v31b.py": "e35236c78fe1a6cc53320b938eafc76c75aff5e78b8a5d6b78ca269585b22165",
+    "runs/mv-v31b-formal/primal/v31_primal.py": "34849d8f61768abf725591dc3a8449b805705248f706a8eae00cbdc8a10f6d90",
+    "runs/mv-v31b-formal/upper/portfolio_v31.py": "2a8ffbf28e0d8690814f427ea80e91266a47996910ed5d2a2448a34421f77bfe",
+    "runs/mv-v31b-formal/upper/fleet_screen_v31.py": "cb00181b2169d2339e4ac5a3c107d7da2d04df9e75b7b4c8df0ea483d5091366",
+    "runs/mv-v31b-formal/m4/build/price-ad3f6c1d57942433.so": "5541039eb376cb99eca6090155f56bb14caa9cac0507d9850711a9501cd7204b",
+    "runs/mv-v31b-formal/m4/build/rebuild-b09bfe9ea10d6495ded3.so": "b11a32f5b5caef5f11487edb77de9033ba8f6230a3f4f256bd7c57f7bda4bc92",
+    "runs/mv-v31b-formal/m4/build/rebuild_v3.so": "61081a1a55e43644d98fbdfcbd243751b814557161099ca9165a518eb66a1ac6",
+    "runs/mv-v31b-formal/m4/build/rebuild_v4.so": "89107b45217a7ba1c62832dd4876a2b6111219b3ffdb423145e0e1989c4240db"
+  },
+  "fallback_v21": {
+    "交付/github_release_v21/repo/solve_multi.py": "8bde40ec4833cfb3de7c9e4b77dd8cb9f70ffc13589e33ed84173bd515d2390c",
+    "交付/github_release_v21/repo/multi_vehicle/__init__.py": "dcc354427cfa12c73ebb0cd8837353614e7388ccf1fe217db774408bda1db8fb",
+    "交付/github_release_v21/repo/multi_vehicle/baselines/__init__.py": "e07642d6ab6ff755a382316a282f9da115ccc6b75016199cb54b475680e00fef",
+    "交付/github_release_v21/repo/multi_vehicle/baselines/mv_lns.py": "e4ea4e41423c4cc543bfef448b6b9769b402b640467404be94de6d23b5b0fa45",
+    "交付/github_release_v21/repo/multi_vehicle/baselines/segment.py": "e7638b73a987eece25c91bb14dead0e93e35e758f18144ec478de981d461c4ea",
+    "交付/github_release_v21/repo/multi_vehicle/baselines/site_milp.py": "b36f6788b804856819ea351a763510b0f2a23587108a451e569b811aac372220",
+    "交付/github_release_v21/repo/multi_vehicle/build/price-ad3f6c1d57942433.so": "cc3219e77f5d7dd749ad2c86a957d63a484a95cd0d8d1fcef9aff5e661dc5405",
+    "交付/github_release_v21/repo/multi_vehicle/build/rebuild-b09bfe9ea10d6495ded3.so": "73e0adcb281cd74ddd43e9cd7570e5b5d538932fb4cafca04d6c5bf351179837",
+    "交付/github_release_v21/repo/multi_vehicle/build_native.py": "05d9d815f5e2fa5b64e16c4add5bf95a0ef21a0e154cf48ba2c93311019f0db0",
+    "交付/github_release_v21/repo/multi_vehicle/engine/common.py": "973d99e3f9f655c1d7bdc9cea491c01f48f476676fe0736e1719b4757dfa4c99",
+    "交付/github_release_v21/repo/multi_vehicle/engine/fair.py": "d4b4b3b9d8c63ae926c5f80a8d7b76eac45fd56656add28d66d8a5cae0f89614",
+    "交付/github_release_v21/repo/multi_vehicle/engine/polygon.py": "cf845379aed4f2a280619a52fe5a135f9d66f014e5270fca4b21dc74680e6fb8",
+    "交付/github_release_v21/repo/multi_vehicle/engine/pricing_core.py": "27bed76aafc305f18faa18b87b7cc06d4a925dab50ee23ee9c21560ffb9e51ef",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal.py": "459c75086c5f85313127e72eb1591eb634daa0f2ead71364ba71d92ee3bf25aa",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal_vendor/allocation.py": "7b0313ef849cf246e911ed270539ec17fa4369e64e4ed9dc605160e7cc8f396e",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal_vendor/fleet.py": "5af17436b5556189d68ee149cfe3fba16df406a47db699c38121794999874623",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal_vendor/partition.py": "71b1b2c76818af108b52561f0ff496dac6d939ec0b6752ab35ed987aea8950ab",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal_vendor/rebuild.cpp": "8dee367223c45b2d5246ebf18fb0640d2d01917c41a5a1236d700ffdc427b7e0",
+    "交付/github_release_v21/repo/multi_vehicle/engine/primal_vendor/routes.py": "cc41c52ddf9dc8925c7f7d34e77696198c65b76fe27f1d8c4a9a6d3a37e86123",
+    "交付/github_release_v21/repo/multi_vehicle/engine/screen.py": "00142bf3d337c8dd7fb0abcc3298ff42cc179fac6a24399bf2433f6d023d7ab4",
+    "交付/github_release_v21/repo/multi_vehicle/engine/supplier_split.py": "c754a5e2b1dea6e27a27b10fca4490b853e5e48be090d9b65dc42bf1f7fc3ec5",
+    "交付/github_release_v21/repo/multi_vehicle/engine/tree.py": "7ff2ed4e47784141d3f1cfbb245cc1eabaa1e02dbaa7fdae8272ef76fc601ceb",
+    "交付/github_release_v21/repo/multi_vehicle/engine/upper.py": "3edbaa4e338aeda97e52838a7e1a45502d1634248d11248d5c8a30cb4924b34c",
+    "交付/github_release_v21/repo/multi_vehicle/engine/upper_src/price.cpp": "059dd2393d98d90a2e3de7934f5a46036448f491f736f04466c9565266c3a575",
+    "交付/github_release_v21/repo/multi_vehicle/engine/upper_src/rank_reference.cpp": "08ad962279ac4345599b37179d7e43ac98870c07c1019c9d0f7fe8d417f605ce",
+    "交付/github_release_v21/repo/multi_vehicle/engine/verify.py": "c5b307b380176a8137c3b9712d9e59f72a88b6bcfbdab58a591e1ab8842b6997"
+  },
+  "files": {
+    "runs/mv-v32-integration/build.sh": "10eb1c85a4a290e8169314c0fb8c89fc8040e3ab5b2da74454def622fbb07d66",
+    "runs/mv-v32-integration/harness/ablate.py": "b90635b03bf7f542a10582403c67afa49e244be08a54c5eb007b99c3169bf93f",
+    "runs/mv-v32-integration/harness/ablation.json": "0e9427d7b4e3347f8d11afa81c60bfc81b8f2f8e7104d4d85fee7931966c18d6",
+    "runs/mv-v32-integration/harness/ablation2.json": "7967a41c5b270ddbc8c4c51a538f9a0d18a94bb9962c87de4e56f56af0c004de",
+    "runs/mv-v32-integration/harness/baseline.py": "269fbe9b051de1974a78c2cd2a11216ba6de532bfded272dbe9d66a1c5b09332",
+    "runs/mv-v32-integration/harness/boundary_gate.py": "23b3c032b4f54c05e20b8b39f4c56cd87d3c1b5dde5a418ad659de200e5186cd",
+    "runs/mv-v32-integration/harness/campaign.py": "25489b25ba1ae421d514cff04afc625eccbd1c3cbea0c504640aae7734311b8c",
+    "runs/mv-v32-integration/harness/final_pilot.sh": "d25af673dc4711929577d67edfc86f5190ee220769788f8d118204474f620597",
+    "runs/mv-v32-integration/harness/freeze_v32.py": "871aa50401b49a9fe4523d2b845efc53d79483ec0db91e118ef66a2b8c4e3f15",
+    "runs/mv-v32-integration/harness/gate.py": "1e8e760a44dfdde44a1f7a931641e954a03254dcd4d311ee59109c7ab847a240",
+    "runs/mv-v32-integration/harness/gate_v32.py": "ad0d4b202b156634da13859e0f7be0b4ea7be8e7508fe407c4ed66347b151724",
+    "runs/mv-v32-integration/harness/initial.sh": "4bf46642b000689228dc511e60e35651e6d0a051f40fac0278cfded55f212758",
+    "runs/mv-v32-integration/harness/inputs.py": "6877c98005c1df0975e0a005027de559601d4f1c60c1e46f666e026fda76d62d",
+    "runs/mv-v32-integration/harness/locked.py": "d1258a43851409ed4a21ee04ab5d7173b1bb3d3540a192913526a446a7895301",
+    "runs/mv-v32-integration/harness/phase1_campaign.py": "f81ddd7103cd1b8688efca97d98eb7bbcc6066ec0a9122941af9309c228baf85",
+    "runs/mv-v32-integration/harness/pilot.py": "2ece66cbab528aad2e87aae474879795b2f3c737c7695a55eef26c126af9ef06",
+    "runs/mv-v32-integration/harness/policy.json": "ae45dd0c083a9c574e0e77514e699371363d395d9d54422908c8de32854aee98",
+    "runs/mv-v32-integration/harness/policy_a.json": "ae45dd0c083a9c574e0e77514e699371363d395d9d54422908c8de32854aee98",
+    "runs/mv-v32-integration/harness/policy_b_k2.json": "d538f13cee602f1eadf062808344c8b41f7fbf9a6000b3b2d3f5512351b8b45c",
+    "runs/mv-v32-integration/harness/policy_b_k3p.json": "1197bd79f652bace34272e5ca918484c9bd886cc5889f4c2991f542faf7d7220",
+    "runs/mv-v32-integration/harness/policy_c_k2.json": "d63d18fcab86a15c1728460f7cc7c2420667d8e38f1ee36b747f457fdf8b7a9d",
+    "runs/mv-v32-integration/harness/policy_c_k3p.json": "1c4d7bfd4e57228e0bfad86400e687d12f77e6e4a7ed587c09e0150cdab4bcd5",
+    "runs/mv-v32-integration/harness/policy_d_k2.json": "2880b246cbeb938ce7b5f2e2aa83192e596b1af01fd58f7967135c706eb3a3ea",
+    "runs/mv-v32-integration/harness/policy_e_k2.json": "9f00391a084df97e7fad3ff46692e9f767f6c0e377b6d2ee33f3f75aac50e2bc",
+    "runs/mv-v32-integration/harness/policy_k2.json": "2880b246cbeb938ce7b5f2e2aa83192e596b1af01fd58f7967135c706eb3a3ea",
+    "runs/mv-v32-integration/harness/policy_k3p.json": "1c4d7bfd4e57228e0bfad86400e687d12f77e6e4a7ed587c09e0150cdab4bcd5",
+    "runs/mv-v32-integration/harness/portfolio_v32.py": "2aebf6cc2c2452e0804eabd0cbbcc493dcca733b297d748d3bcc62c72a9b68c6",
+    "runs/mv-v32-integration/harness/preprod.sh": "2e9321af269ffaaf146f41cc55d3588f80a59fc43855f2c2d71ddf8b1c5ca777",
+    "runs/mv-v32-integration/harness/prize_test.sh": "233a679830c0bba9c16e84554fb40a0efd82019671fdbf04b285dd2d8068ce04",
+    "runs/mv-v32-integration/harness/refine_pilot.py": "5b841b9a4a4c9194b6b6bf091f64ca7cc26184e59e28a460b79aefd60c072790",
+    "runs/mv-v32-integration/harness/replay.py": "40f47320684a54238a05642eceb824068f6cee2b0c86ddfad9d9a9334e4e81d9",
+    "runs/mv-v32-integration/harness/retained.py": "19d9adf7a146eabf5f7b67149f25d04a0af2e9ec050b82dca875f00e3f272dcd",
+    "runs/mv-v32-integration/harness/second.sh": "f932829d629d0e574c7ce937a43e8c05644b22e4c9abecb251cab5c0d34f2920",
+    "runs/mv-v32-integration/harness/self_attack.py": "2f17c8fdb926a7a7c4d2073b945c950a4e076d868e8016aa9126e4cfbfa8b667",
+    "runs/mv-v32-integration/harness/solve.py": "27576268d15dda57d0fe68fc9c13b4c6487b729a00bc8c30b00449af8778e00f",
+    "runs/mv-v32-integration/harness/third.sh": "a3c25cc53aebe9e0d5a51728030d2a77fb9cc994b0b3d08e2b4aaf4a589a2705",
+    "runs/mv-v32-integration/harness/worker_v31b_seed.py": "eeeb2da033a7d40e2fd0010535c58d042207965462e4f05851c0d5491352c35e",
+    "runs/mv-v32-integration/inputs/open-lgA-150-k3.json": "f59b5b257ead049cb31c356c720135c5d3222f5359882c292c776e538930331e",
+    "runs/mv-v32-integration/levels/build.sh": "60a49670563acb6576670c932a7db58f7e558ba7b4a23b81fef94a0f69c86317",
+    "runs/mv-v32-integration/levels/build/levels.so": "07b96273b9e19657123bfd3fb46b7a11e9a29bce5d09633429e28f852f381877",
+    "runs/mv-v32-integration/levels/primal_profile.hpp": "bdbc0f45d243c91a92d5a25beef8712594e03687d9cc257498fad1e503b318bf",
+    "runs/mv-v32-integration/levels/search.cpp": "720b5ce0a3af0c2ca1131cbe85c31ca6ffbc4c668a90349d2f3787fc9eaa40ef",
+    "runs/mv-v32-integration/levels/solve.py": "aa6d3032bf3773b16db545f093a2f0755343a490f3124bb75346c89bbe4419d3",
+    "runs/mv-v32-integration/maskfleet/build.sh": "6ad6499608043447fadd876267c41d712bdc13e5d8811647ca7339bb799d9ebf",
+    "runs/mv-v32-integration/maskfleet/check.py": "c2487f72b5281932b9adaca19fe7963aeedc1bf6bfc7ed1a5fd5a575b705e582",
+    "runs/mv-v32-integration/maskfleet/core.py": "a5911334b601a847489410146373aa053dc280b9be869fb4d0021250cd48db68",
+    "runs/mv-v32-integration/maskfleet/mask_price.so": "be1f125fef42bca8f95f6f98ed350765866ed7e477014784a47433a817b44f91",
+    "runs/mv-v32-integration/maskfleet/price.cpp": "c378d5f6bcd718b4931318808d358d69b35ee4de4e5413dab0a9853cc8431ac7",
+    "runs/mv-v32-integration/maskfleet/smoke.py": "f03aa9164181cd0a8500df531116e9658ea1530d962d37bf68501dd0c7dcd474",
+    "runs/mv-v32-integration/maskfleet/solve.py": "8091b6f887f1f042eef1ac242889fa3a7789411d57232adc80f3e59c1751af21",
+    "runs/mv-v32-integration/primal/build.sh": "900230662300b4f3640c0431fdd88b0bbe2c314b44fcc6b3cac2ac67e1676eb4",
+    "runs/mv-v32-integration/primal/build/fleet_primal.so": "f3fb27c91ce3d9ddc92ce1844f7de47608b9e43c059202917b7551b110b4152a",
+    "runs/mv-v32-integration/primal/fair_search.inc": "059204123d9c75b3f770297a09ec18381556f49e4a9292e22fa22114836a0c34",
+    "runs/mv-v32-integration/primal/primal_profile.hpp": "bdbc0f45d243c91a92d5a25beef8712594e03687d9cc257498fad1e503b318bf",
+    "runs/mv-v32-integration/primal/search.cpp": "025ad3b8c4f239991dd0fa38420eec1bc7ef444e0380d1f1200b9563b3c5e0d7",
+    "runs/mv-v32-integration/primal/solve.py": "39df6950da7c2a97ff9266a6abe177b2c6466c00c1a0c7d6c9361d81e86b64c6",
+    "runs/mv-v32-integration/prize/solve.py": "89259f4567d1f19d708eb5ca3d971718347563d9346037ac2d4598f490e0ec36",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/IteratedLocalSearch.py": "f7ad6008fb6b7e8df8373a2053fdc955103e7ea72dcf6d9ffed6391e81bc52bb",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/Model.py": "c6cd5062e5bdf03de642ef178ed3d74f07bf19de223ae9c0566086baf812e608",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/PenaltyManager.py": "2f691640bb5a785920df1077653d2bf406bc0350594913f9fe8378c127a3e6d1",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/ProgressPrinter.py": "de201ab174e09c35a77683e8ffaa87c8c824e7edc35ed67d20212a7f9bf56e29",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/Result.py": "8ffc725e38fb8909c3a353c9cacbbb51ead81078bcce12fc6ef4664c171512dd",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/RingBuffer.py": "00a6f90ed687ab3582233e0ec2a4a74e587fc3e3f6bbf011a5baa17c9ced4874",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/Statistics.py": "bf978251926ce06ffe40b08d19f5ae6efd1d5f7cd64f409af40632a355bdd6cd",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/__init__.py": "a86be28b0e5a0e40a6e415734fc2a6f7e81007a5a799767cec86c18bb9d70591",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/_pyvrp.cpython-313-darwin.so": "575015dfe8fb3e4a5ecbb0cd1f4f0c38f660d4bda23c5e4ba2980f8caa3d0a64",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/cli.py": "65e79c0c5fd77f612d0ccc4443eb89e53712963b09ff865b7835a177b79561e0",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/constants.py": "7d44d266fedaa80da76e763b073c5cfb4d8acef1c1becf5189a7f8eedb79251d",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/exceptions.py": "daf758b92f6747c9e7c4f184c7e38181fee73e9c84ff5bbcad11133d474db6f1",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/minimise_fleet.py": "e2431da616e5d17af40e799515446fca490ac27e4f67f82855465f63c5a1b8bf",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/__init__.py": "5b967ff9f4a8008745b4dda7ce97d7f98cee7bdb864773022ae52597e337ad50",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_coordinates.py": "0b93401abf9b6323c9b36d9c83b998ccd5babe3ac87a665d31b9399b5a558e55",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_demands.py": "0fa6afccdd5274a5f92c5126afaac6dec2e2f9229a58a19adccb1c8962e278d4",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_instance.py": "1f2a6d6f47ef9b6b202137399831c191b19565a2eb3d34c07a5a13f697a78deb",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_objectives.py": "29261f19fb7bf9ad4c41affcd72e331ccb2cf2563b8464116a56489ebe018984",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_result.py": "1ac3b47fa54c9758e1f505e2e81b165cf9e62f0fc42dfe30aec8af1ea93a536d",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_route_schedule.py": "01902cc8b327c546a1107b51c6088f09d67fa001556b1087619ea043165d449d",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_runtimes.py": "1c78a197a7106e361f13dd1282542ba795841c8dfb7e7947d8217f79cdbc1407",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_solution.py": "895acae26d2bc23cee10f067814ab0d1df98eb93aac5d60a12ac5d0288454f83",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/plotting/plot_time_windows.py": "126011633f311338a29951571e45f1b86f2caef7d9c421599256345324d3c471",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/read.py": "ece8c2e7b279147a558e9c637701d65e42829326633b9b42e671b57f18f6101a",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/search/LocalSearch.py": "e91818fe863aedcfed1cb9cd6fe064f5dc072bfc80a0f314b74399af54bd87d6",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/search/SearchMethod.py": "206482d71b8ffb9ecad94f9f26b826a9c5fee73b625544fc926cc4768292ac05",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/search/__init__.py": "9ac30406f943b0db581df56603d752e11bfd87f210af043836d0e3fbab1825af",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/search/_search.cpython-313-darwin.so": "91890e085dd37d9c586665b18ab55c49d096e1f9e3f9dc911f00609687ce4774",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/search/neighbourhood.py": "bfa8c9354a460e0b17ad449591e9882ceb7349da79d6db0c18529c86fa802fce",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/show_versions.py": "c965512448e897212497e04cd1431de6b5f04ac9d094aab85451fe7df4ac5fbd",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/solve.py": "a179ebdac214422a8861a8da972fe3b6bf1a5e48ac8e29c8840c15d87a1daeb3",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/FirstFeasible.py": "f414b783038a837a58a0a32e249e818ec85af2c08f0f7999e52f63d40ffea6dd",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/MaxIterations.py": "f20d207a8648a8895cba80ec0f89e38356f261bb8a1e152e61b6db0287b4e460",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/MaxRuntime.py": "f7c9427eb2519fcca726646c035bee8ea538bf6d3a0007f79180512edb9f0dc4",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/MultipleCriteria.py": "702e631fb1939ba4db74835fbfc0d2dc7f381377334fb33ba1f6d254b136f1df",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/NoImprovement.py": "8bc8e851ad27c9cdd1efd41f160b235c3152e9ee6fa9a7ac12dcfd7a3562d65c",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/StoppingCriterion.py": "993fde87eddfd1a615920ce67aac57eb59319313b038b6c1790c0f33487b15f0",
+    "runs/mv-v32-integration/prize/vendor/pyvrp/stop/__init__.py": "4310a18e8522f4fa5f2ea84b8fc3df454167bb5e2c9208e4a0c61f6234bbf73b",
+    "runs/mv-v32-integration/prize/vendor/vrplib/__init__.py": "ac483bac89168e5ee4f13d10cef0afa38c68d8f8ae5c72478c9b44eb894ff2c5",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/__init__.py": "604d2ece0ed4bf91c66a93c0d93f1c753aa752ce93d9514a67c0880eea5d99cb",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/distances/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/parse_distances.py": "d93f30cd57525701c9125be31b224c267a314a68faba8c7b7ca05a947858bafd",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/parse_solomon.py": "64bc0e8c38b6895cb2380e99d3f025e643bbdcc5f295b80663f3d837d0f8ee19",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/parse_solution.py": "fd547eb8f0ee882f46e4ce6e4a76f9adcf00c19d7860f29bab67b5154d6de48d",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/parse_utils.py": "9f70e778e8872ba3166cc102245b2c29538aa6b6046864656c346d0e1abd989b",
+    "runs/mv-v32-integration/prize/vendor/vrplib/parse/parse_vrplib.py": "eeaf785ebf64e57b92a032684581d1001ce8e65d5824856da356cde762a96b19",
+    "runs/mv-v32-integration/prize/vendor/vrplib/read/__init__.py": "e6e5274055991f4a065cb7fe74f44bac027a3bdf5ab111a3c6e79db487bd292e",
+    "runs/mv-v32-integration/prize/vendor/vrplib/read/read_instance.py": "554f9b6920a4dc953ca99298c02f04dad2d18639e7a3faa1db2c4aca04ffaa00",
+    "runs/mv-v32-integration/prize/vendor/vrplib/read/read_solution.py": "ab400b533d8f2393fa9ed3dd68dfd9acc8f2a535341f77192feab88524780cf4",
+    "runs/mv-v32-integration/prize/vendor/vrplib/write/__init__.py": "12ab70206fa5a16389d92520a352d810d1d0b28bb807b14f99cc1205deb14157",
+    "runs/mv-v32-integration/prize/vendor/vrplib/write/write_instance.py": "84d6e993bdf1d01d8e3ff7c4ee292ba8764626fce81fd466a3a190821a06c336",
+    "runs/mv-v32-integration/prize/vendor/vrplib/write/write_solution.py": "a7e4672c5e7db96681a61604f7514a82bb75e19545bdb94df3af8500113f9582",
+    "runs/mv-v32-integration/prize/vrplib.json": "7e0f015d7539b876d6545cb7424bc2517f5ec924991848e2a5f6fa1a30675a28",
+    "runs/mv-v32-integration/prize/wheel.json": "b7897edd93dc47860b8a2611e76399a77e2ed7c51ba382e2a395ec71b08fb5d2",
+    "runs/mv-v32-integration/reference/common.py": "973d99e3f9f655c1d7bdc9cea491c01f48f476676fe0736e1719b4757dfa4c99",
+    "runs/mv-v32-integration/reference/primal_vendor/allocation.py": "7b0313ef849cf246e911ed270539ec17fa4369e64e4ed9dc605160e7cc8f396e",
+    "runs/mv-v32-integration/reference/primal_vendor/fleet.py": "5af17436b5556189d68ee149cfe3fba16df406a47db699c38121794999874623",
+    "runs/mv-v32-integration/reference/primal_vendor/routes.py": "cc41c52ddf9dc8925c7f7d34e77696198c65b76fe27f1d8c4a9a6d3a37e86123",
+    "runs/mv-v32-integration/reporting/ablation_verify.py": "f25d988966445bf50e3c5c6ce3e7af450855bf19f00dab33605cd0753b959b7c",
+    "runs/mv-v32-integration/reporting/archive_verify.py": "32b7c93925d698871af98e1237b20546f5187f97f2540b110f11d1a5689d859b",
+    "runs/mv-v32-integration/reporting/boundary_verify.py": "93b50542dc57ba5a3d81ee345cb291e46e1de41b8c18ea5011487e22629e6bfb",
+    "runs/mv-v32-integration/reporting/check_portability.py": "bd32e9a7f03bc05ddd07e477313bdd619980387249b44ab751c844467509bfda",
+    "runs/mv-v32-integration/reporting/compare.py": "b428bb3832e7d0b94b471c4a11d198ac43243c821c36f51b3dbce27691f83f8b",
+    "runs/mv-v32-integration/reporting/compat_smoke.py": "e0d2e9d9abe871f6d305ed711f52099f722f2d6d91590e7219f9aa921dc9d918",
+    "runs/mv-v32-integration/reporting/compat_smoke_verify.py": "86344ad1c8cf41e1ddb892f844b82481aded7b02cc3fb153425601962f150a6f",
+    "runs/mv-v32-integration/reporting/delivery_check.py": "d0e21fd19621ac9647b3b0a1f783cad876874c0e6e6bc6d384d885caa7122ad7",
+    "runs/mv-v32-integration/reporting/diagnose.py": "7fc7f6314d7b01b338ee914e6d2f508f346e97f1f02c1c1d1a36d3f9f6472328",
+    "runs/mv-v32-integration/reporting/fast_audit.py": "d13b80521fc1d0c53f32acdc49b1a89ac460d715904b1dbbd2a9c6d0a893dbf6",
+    "runs/mv-v32-integration/reporting/finalize.sh": "4c8e32a6bc6011e94f04c0281fa0701ecb80f73a76f91dd0de92188247c08a98",
+    "runs/mv-v32-integration/reporting/finish.sh": "4fd17ea70fc41c1a3a1a2fc99f82f3a172778f0eecc1be8d54a31312c07b3a25",
+    "runs/mv-v32-integration/reporting/gate_v32_verify.py": "54793aedf893f037de6ab2b6b3f28128be37accad47fa8f7edd0208445958424",
+    "runs/mv-v32-integration/reporting/latet_workbooks.py": "9b7bfacc5abd0c23f2f8d5478d7ee395b10bb522bb1792cd568a27f213e7cd7e",
+    "runs/mv-v32-integration/reporting/legacy_verify/endpoint.py": "9482517e6413830c27015062141897185a70bdc807daaecbc5cd9800cf0364a7",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/common.py": "973d99e3f9f655c1d7bdc9cea491c01f48f476676fe0736e1719b4757dfa4c99",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/fair.py": "d4b4b3b9d8c63ae926c5f80a8d7b76eac45fd56656add28d66d8a5cae0f89614",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/polygon.py": "cf845379aed4f2a280619a52fe5a135f9d66f014e5270fca4b21dc74680e6fb8",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/screen.py": "00142bf3d337c8dd7fb0abcc3298ff42cc179fac6a24399bf2433f6d023d7ab4",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/supplier_split.py": "c754a5e2b1dea6e27a27b10fca4490b853e5e48be090d9b65dc42bf1f7fc3ec5",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/tree.py": "7ff2ed4e47784141d3f1cfbb245cc1eabaa1e02dbaa7fdae8272ef76fc601ceb",
+    "runs/mv-v32-integration/reporting/legacy_verify/multi_vehicle/engine/verify.py": "c5b307b380176a8137c3b9712d9e59f72a88b6bcfbdab58a591e1ab8842b6997",
+    "runs/mv-v32-integration/reporting/legacy_verify/verify_multi.py": "8e83ce4047e3f6ade7d574dfcc69d5c5a4384a1d4d9ca2caf25d7a2b5bd8f503",
+    "runs/mv-v32-integration/reporting/load.py": "68c0895c7c1e954ceb6c5536d8448fd500efe7fba0c48b7cb38ce1c1c474bbda",
+    "runs/mv-v32-integration/reporting/phase1_verify.py": "54739531590655d828549e553bdc92d8b6b3bd1a9c6b2801f0db864fc367a982",
+    "runs/mv-v32-integration/reporting/plot.py": "9ba5cd7ea5b836d2aef0f98310331ba33129b277eac345d28157f2d1e79e0867",
+    "runs/mv-v32-integration/reporting/retained_batch.py": "76f6330c25a88768b45191fa281691f9e53c15b120cdbec011ab66957b435eec",
+    "runs/mv-v32-integration/reporting/screen_fast/build.sh": "d10df844925e29b4915003635b2a71b37e4434a3d965956721f1f13d7a039449",
+    "runs/mv-v32-integration/reporting/screen_fast/enumerate_masks": "f9e27afbf62c3087e53fcba5bb35bea09567db9414dcc7b110fea9d3e5cd5ca6",
+    "runs/mv-v32-integration/reporting/screen_fast/replay.py": "a623980f0ac5a652ab22e640e4887ca9235230cb223d52cd1d7edd93d57695b2",
+    "runs/mv-v32-integration/reporting/screen_fast/small_compare.py": "29903f3b53eb5286d53d0b145e3cbe5518535ca41fd379aa3953689b167310d8",
+    "runs/mv-v32-integration/reporting/screen_fast/verify.cpp": "08633bb0e197208b3fd8e1b2072d0e5b246d1ab9a6e72fbd0a7c5e63c6ce11ac",
+    "runs/mv-v32-integration/reporting/v21_endpoint_verify.py": "b063afa25ae4c069d1b9411021b42d37ff7a589dd2a9000ce782e0f7a2e9506b",
+    "runs/mv-v32-integration/reporting/v31_backend.py": "f918fec4e4fabacd5401eda72231b46e7f485144463dfcdd14f7645aa007d54d",
+    "runs/mv-v32-integration/reporting/verified_timeline.py": "ef998125a4c30f05dd7e530c0bd77648d49b9a3da9d0ced3160e88a960d0a4d9",
+    "runs/mv-v32-integration/reporting/verify_v31b_batch.py": "f99b79d8d3cf4176380235b44be6a5d553c1a514c99ee7f3aca52ff3712a9ff6",
+    "runs/mv-v32-integration/reporting/write_report.py": "02817218d0f6acc032663a55dfc0e82995c35254dc06befaa0838d4848c461e8",
+    "runs/mv-v32-integration/requirements.txt": "408504632e8f90b781631638e6e6cede682c6bd276f6a73412421047b14645cf",
+    "runs/mv-v32-integration/route/adversarial.py": "44238f24ddfa7052c2cbae6341a2f03b089191dc837adc25d4df52e42e1959a7",
+    "runs/mv-v32-integration/route/build.sh": "fbd550bcdd7e4189776e9806c64a432443b30e00df50555da229a2b86b5e377f",
+    "runs/mv-v32-integration/route/check.py": "85d216e3d0dfe16a04a59e18f8d524b710fbbd505acd458a94c1314b177bca4b",
+    "runs/mv-v32-integration/route/model.py": "3766bdee6b3c12ccd944bec67c03b656c484ce9aec755713a499c5adb65111b4",
+    "runs/mv-v32-integration/route/price.cpp": "f0b0b33688c2cbd04d5343070e57d8075987d5f693dda09fb2ad462275320643",
+    "runs/mv-v32-integration/route/route_price.so": "0dc0b632135965b6a1119e9182dd45cef19f0def315a70ee1565b9c14ff12e61",
+    "runs/mv-v32-integration/route/solve.py": "39f1bf79e933c2e905ff9f40e1b5b90afe27e3e8c732c3ae9f8f4636b4bc75bc",
+    "runs/mv-v32-integration/screen2/__init__.py": "3b5cf58b56926f7a022bb662af4fd02673f481efddb8f41db39bf0e2ca05b22f",
+    "runs/mv-v32-integration/screen2/adversarial.py": "1b731553d74231fd9dfb177e7e86a28b9028b6cd235bc22bfb3afa1302f3f29e",
+    "runs/mv-v32-integration/screen2/build.sh": "5f7bbb93ac36aed0bfaa234ff5e5ba6aba665c069089d8e0e7a5a3526ec4f2e4",
+    "runs/mv-v32-integration/screen2/check.py": "b336004fc9dde9bef92f0e13b0b71cd480aa69331037a58563b2be121b0052a3",
+    "runs/mv-v32-integration/screen2/screen.cpp": "52135608076435274447a3152f22015ab6666ad4a8b38433d7660a1e9625bc50",
+    "runs/mv-v32-integration/screen2/screen_kernel.so": "e19d7756b80e6e1627f778cd09ca9485657df385f444a73577094647127511f0",
+    "runs/mv-v32-integration/screen2/solve.py": "1103ca9ed0a311f8231f54dc402fede029d89dcc850eebaecf7252004f41308d",
+    "runs/mv-v32-integration/solve_fleet.py": "52c071d8721f8f318704621d4c1682156c44e48a0bb2e09b765df54e6d779b38",
+    "runs/mv-v32-integration/zone/build.sh": "a0319c9fe856ac3ac37c3dcf8ba87ddd46cb3702fe7d54b227ef574e6c55fd4a",
+    "runs/mv-v32-integration/zone/check.py": "cff3445a8550ae98ff0d8b7d38ac9294446bf13f6d391182f8410052278589c5",
+    "runs/mv-v32-integration/zone/price.cpp": "0b60779bd0ddbb3cb150478edde176f33921a4e22cfdc9d04c3ce23376538d7f",
+    "runs/mv-v32-integration/zone/smoke.py": "47b56171f6c2aaeb8bcc38728d1e25832ac2e6904e5c6719052cdc1f8ebc3dcc",
+    "runs/mv-v32-integration/zone/solve.py": "a91943dfe26607215cb69c63ac0438ec979ba9aa4dc31c84c3b09f448b6bad68",
+    "runs/mv-v32-integration/zone/zone_price.so": "5e3f571a9490f864c31f342a6b17611354363e3674b263a542dc8de90e3785f8"
+  }
+}

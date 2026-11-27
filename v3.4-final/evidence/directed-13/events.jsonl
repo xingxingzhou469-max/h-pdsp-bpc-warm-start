@@ -1,0 +1,6 @@
+{"kind":"L","score":"0","file":"events/0000-L.json","sha256":"f12692c0341269a90b4ccb80c7f6c06cd6d392c382f636a6ec70c71781b3dad2","elapsed_ns":19029000,"wall_ns":19025000}
+{"kind":"lattice","score":"12","file":"events/0001-lattice.json","sha256":"f1ed502bda2a3cd9630ba76824c70b68209e2a3b2eb04e264594ec7418a30458","elapsed_ns":19252708,"wall_ns":19249000}
+{"kind":"L","score":"1","file":"events/0002-L.json","sha256":"8eee6e98e095395a4d814f1bfc41ff965d06287055ee1b4062c2bd7bedc1cdf8","elapsed_ns":20668875,"wall_ns":20665000}
+{"kind":"lattice","score":"2","file":"events/0003-lattice.json","sha256":"fd63790d551c2a3950e52624192b00d65cd4dac7ba96942da2c970373a963d97","elapsed_ns":113269708,"wall_ns":113266000}
+{"kind":"lattice","score":"1","file":"events/0004-lattice.json","sha256":"9bf0ca717e6bce279d305ac145d60e69e5b783dbbd7869b8464a1c528e2a3a16","elapsed_ns":133262292,"wall_ns":133258000}
+{"kind":"optimal","score":"1","file":"events/optimal.json","sha256":"f81d40ce9b429b4647e08b08320b18e8e9d1b1288778835607df4dc37940f76b","elapsed_ns":372019458,"wall_ns":372017000}

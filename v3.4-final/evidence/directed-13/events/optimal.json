@@ -1,0 +1,1 @@
+{"schema":"mv-lattice-optimal-1","input_sha256":"d0b1bc326d9ae0f9c9d5887ef26512dc1c68ce8c54f59dc9d6a5c301e8f49daa","value":"1","lower":{"file":"events/0002-L.json","sha256":"8eee6e98e095395a4d814f1bfc41ff965d06287055ee1b4062c2bd7bedc1cdf8"},"upper":{"file":"events/0004-lattice.json","sha256":"9bf0ca717e6bce279d305ac145d60e69e5b783dbbd7869b8464a1c528e2a3a16"}}

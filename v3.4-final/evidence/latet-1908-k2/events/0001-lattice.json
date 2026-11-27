@@ -1,0 +1,1 @@
+{"schema":"mv-optimal-value-lattice-1","input_sha256":"e677b796decac152df802e5c5f34bffcba18c58b25c5bcc55eec2d41dc0e7213","upper":"12000","parameters":{"delta":"12000","rho":"1","P":"32660","g":"600/1633"},"parent":{"kind":"box","sha256":"2059fb1adb78c0171d0197297a1adeabd46bc23dabb9bbc14f2a3a60430be17f","bytes":"{\"upper\":\"12000\"}\n"}}
